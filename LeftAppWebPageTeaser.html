@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Left. — Coming Soon</title>
+<meta name="description" content="A new kind of budget app. No bank linking. No subscriptions. Coming soon to iOS.">
+<meta name="theme-color" content="#22C55E">
+<meta property="og:title" content="Left. — Coming Soon">
+<meta property="og:description" content="A new kind of budget app. Coming soon to iOS.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://left-budget.com">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300..800&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --green: #22C55E;
+    --green-glow: rgba(34,197,94,0.12);
+    --bg: #FAFBFC;
+    --text: #0F172A;
+    --text-secondary: #64748B;
+    --text-tertiary: #94A3B8;
+    --card-bg: rgba(255,255,255,0.6);
+    --card-border: rgba(0,0,0,0.05);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0B0F14;
+      --text: #F1F5F9;
+      --text-secondary: #94A3B8;
+      --text-tertiary: #64748B;
+      --card-bg: rgba(255,255,255,0.04);
+      --card-border: rgba(255,255,255,0.06);
+      --green-glow: rgba(34,197,94,0.08);
+    }
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    font-family: 'DM Sans', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--green-glow) 0%, transparent 70%);
+    pointer-events: none;
+    animation: breathe 8s ease-in-out infinite;
+  }
+
+  @keyframes breathe {
+    0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 0.7; transform: translate(-50%, -50%) scale(1.15); }
+  }
+
+  .container {
+    text-align: center;
+    max-width: 440px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .ring {
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 2.5rem;
+    opacity: 0;
+    animation: fadeScale 1s ease-out 0.3s forwards;
+  }
+
+  .ring svg { width: 100%; height: 100%; }
+  .ring-track { stroke: var(--card-border); }
+  .ring-fill {
+    stroke: var(--green);
+    stroke-dasharray: 377;
+    stroke-dashoffset: 377;
+    animation: drawRing 2.5s ease-out 0.8s forwards;
+    filter: drop-shadow(0 0 12px var(--green-glow));
+  }
+
+  @keyframes drawRing { to { stroke-dashoffset: 130; } }
+
+  .brand {
+    font-size: clamp(3.5rem, 10vw, 5rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 0.8rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease-out 0.1s forwards;
+  }
+
+  .dot { color: var(--green); }
+
+  .tagline {
+    font-size: clamp(1rem, 2.5vw, 1.15rem);
+    color: var(--text-secondary);
+    margin-bottom: 0.6rem;
+    opacity: 0;
+    animation: fadeUp 0.7s ease-out 0.4s forwards;
+  }
+
+  .coming {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--green);
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.7s ease-out 0.6s forwards;
+  }
+
+  .notify-form {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeUp 0.7s ease-out 0.8s forwards;
+  }
+
+  .notify-form input {
+    flex: 1;
+    padding: 0.85rem 1.1rem;
+    border-radius: 12px;
+    border: 1px solid var(--card-border);
+    background: var(--card-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .notify-form input::placeholder { color: var(--text-tertiary); }
+  .notify-form input:focus { border-color: var(--green); }
+
+  .notify-form button {
+    padding: 0.85rem 1.6rem;
+    border-radius: 12px;
+    border: none;
+    background: var(--green);
+    color: white;
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+    white-space: nowrap;
+  }
+
+  .notify-form button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(34,197,94,0.25);
+  }
+
+  .notify-form button:active { transform: scale(0.97); }
+
+  .success-msg {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--green);
+    display: none;
+    animation: fadeUp 0.4s ease-out;
+  }
+
+  .success-msg.show { display: block; }
+
+  .note {
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+    opacity: 0;
+    animation: fadeUp 0.7s ease-out 1s forwards;
+  }
+
+  .badges {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 3rem;
+    opacity: 0;
+    animation: fadeIn 0.7s ease-out 1.2s forwards;
+  }
+
+  .badge {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--text-tertiary);
+  }
+
+  .badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--green);
+    opacity: 0.5;
+  }
+
+  footer {
+    position: fixed;
+    bottom: 1.2rem;
+    font-size: 0.7rem;
+    color: var(--text-tertiary);
+    z-index: 1;
+  }
+
+  footer a { color: var(--green); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes fadeScale {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  @media (max-width: 480px) {
+    .notify-form { flex-direction: column; }
+    .notify-form button { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="ring">
+    <svg viewBox="0 0 140 140">
+      <circle class="ring-track" cx="70" cy="70" r="60" fill="none" stroke-width="7" stroke-linecap="round"/>
+      <circle class="ring-fill" cx="70" cy="70" r="60" fill="none" stroke-width="7" stroke-linecap="round"
+        transform="rotate(-90 70 70)"/>
+    </svg>
+  </div>
+
+  <div class="brand">Left<span class="dot">.</span></div>
+  <p class="tagline">A new kind of budget app.</p>
+  <p class="coming">Coming soon to iOS</p>
+
+  <form class="notify-form" id="notifyForm">
+    <input type="email" placeholder="your@email.com" required autocomplete="email" id="emailInput">
+    <button type="submit">Notify Me</button>
+  </form>
+  <p class="success-msg" id="successMsg">You're on the list ✓</p>
+  <p class="note">No spam. One email on launch day.</p>
+
+  <div class="badges">
+    <span class="badge"><span class="badge-dot"></span> Private by design</span>
+    <span class="badge"><span class="badge-dot"></span> No subscriptions</span>
+    <span class="badge"><span class="badge-dot"></span> No bank linking</span>
+  </div>
+</div>
+
+<footer>
+  &copy; 2026 Ivan Wize &nbsp;&middot;&nbsp; <a href="mailto:support@left-budget.com">Contact</a>
+</footer>
+
+<script>
+document.getElementById('notifyForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var email = document.getElementById('emailInput').value;
+  var form = document.getElementById('notifyForm');
+  var msg = document.getElementById('successMsg');
+
+  // TODO: Wire up your email service here.
+  // Options: Buttondown, Mailchimp, ConvertKit,
+  // or a Cloudflare Worker that stores to KV/D1.
+  //
+  // Example:
+  // fetch('https://your-api.com/subscribe', {
+  //   method: 'POST',
+  //   headers: { 'Content-Type': 'application/json' },
+  //   body: JSON.stringify({ email: email })
+  // });
+
+  console.log('Email submitted:', email);
+  form.style.display = 'none';
+  msg.classList.add('show');
+});
+</script>
+
+</body>
+</html>
