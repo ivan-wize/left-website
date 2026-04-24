@@ -5,29 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Left. — Coming soon</title>
   <meta name="description" content="Left. — Coming soon.">
-  <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
 
   <style>
     *, *::before, *::after { box-sizing: border-box; }
 
     :root {
-      --bg: #ffffff;
-      --fg: #0a0a0a;
-      --muted: #6b7280;
-      --accent: #0a84ff;
+      --bg: #fbfbfd;
+      --fg: #1d1d1f;
+      --muted: #6e6e73;
+      --accent: #34c759;
+      --ring-track: rgba(0, 0, 0, 0.08);
     }
 
     @media (prefers-color-scheme: dark) {
       :root {
         --bg: #000000;
         --fg: #f5f5f7;
-        --muted: #8e8e93;
-        --accent: #0a84ff;
+        --muted: #86868b;
+        --accent: #30d158;
+        --ring-track: rgba(255, 255, 255, 0.12);
       }
     }
 
@@ -37,9 +35,10 @@
       height: 100%;
       background: var(--bg);
       color: var(--fg);
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
     }
 
     main {
@@ -48,47 +47,80 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 2rem;
+      gap: 28px;
       padding: 2rem;
       text-align: center;
     }
 
     .brand {
-      font-weight: 900;
-      font-size: clamp(3rem, 10vw, 5.5rem);
-      letter-spacing: -0.04em;
+      font-weight: 700;
+      font-size: clamp(56px, 9vw, 96px);
+      letter-spacing: -0.035em;
       line-height: 1;
+      animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
     }
 
-    .brand .dot { color: var(--accent); }
+    .brand .dot {
+      color: var(--accent);
+    }
 
     .spinner {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      border: 3px solid color-mix(in srgb, var(--fg) 12%, transparent);
-      border-top-color: var(--accent);
-      animation: spin 0.9s linear infinite;
+      width: 36px;
+      height: 36px;
+      animation: spin 0.9s cubic-bezier(0.5, 0.1, 0.5, 0.9) infinite;
+      animation-delay: 0.2s;
+      opacity: 0;
+      animation-fill-mode: forwards;
     }
 
-    @keyframes spin {
-      to { transform: rotate(360deg); }
+    .spinner circle.track {
+      fill: none;
+      stroke: var(--ring-track);
+      stroke-width: 2.5;
+    }
+
+    .spinner circle.arc {
+      fill: none;
+      stroke: var(--accent);
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-dasharray: 28 100;
+      transform-origin: center;
     }
 
     .coming {
       color: var(--muted);
-      font-size: clamp(1rem, 2.5vw, 1.25rem);
-      font-weight: 500;
-      letter-spacing: 0.01em;
+      font-size: 17px;
+      font-weight: 400;
+      letter-spacing: -0.005em;
       margin: 0;
+      animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+    }
+
+    @keyframes spin {
+      0%   { transform: rotate(0deg); opacity: 1; }
+      100% { transform: rotate(360deg); opacity: 1; }
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .brand, .coming { animation: none; }
+      .spinner { animation-duration: 1.6s; animation-timing-function: linear; }
     }
   </style>
 </head>
 <body>
   <main>
     <div class="brand">Left<span class="dot">.</span></div>
-    <div class="spinner" role="status" aria-label="Loading"></div>
-    <p class="coming">Coming soon...</p>
+    <svg class="spinner" viewBox="0 0 36 36" role="status" aria-label="Loading">
+      <circle class="track" cx="18" cy="18" r="15"></circle>
+      <circle class="arc"   cx="18" cy="18" r="15"></circle>
+    </svg>
+    <p class="coming">Coming soon…</p>
   </main>
 </body>
 </html>
