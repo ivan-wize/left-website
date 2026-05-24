@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support — Left.</title>
+  <meta name="description" content="Get help with Left. Frequently asked questions, contact info, and how to reach the team behind the app.">
+
+  <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    :root {
+      --bg: #fbfbfd;
+      --bg-elevated: #ffffff;
+      --bg-section: #f5f5f7;
+      --fg: #1d1d1f;
+      --fg-soft: #424245;
+      --muted: #6e6e73;
+      --accent: #34c759;
+      --accent-soft: rgba(52, 199, 89, 0.12);
+      --border: rgba(0, 0, 0, 0.08);
+      --nav-bg: rgba(251, 251, 253, 0.72);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #000000;
+        --bg-elevated: #1c1c1e;
+        --bg-section: #0a0a0a;
+        --fg: #f5f5f7;
+        --fg-soft: #d1d1d6;
+        --muted: #86868b;
+        --accent: #30d158;
+        --accent-soft: rgba(48, 209, 88, 0.14);
+        --border: rgba(255, 255, 255, 0.1);
+        --nav-bg: rgba(0, 0, 0, 0.72);
+      }
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      line-height: 1.55;
+      font-size: 17px;
+      letter-spacing: -0.005em;
+    }
+
+    .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Nav */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--nav-bg);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav .inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      font-weight: 700;
+      font-size: 22px;
+      letter-spacing: -0.025em;
+      color: var(--fg);
+    }
+    .brand .dot { color: var(--accent); }
+    .nav-back {
+      color: var(--muted);
+      font-size: 14.5px;
+      transition: color .15s ease;
+    }
+    .nav-back:hover { color: var(--fg); text-decoration: none; }
+
+    /* Page header */
+    .page-header {
+      padding: 88px 0 56px;
+      text-align: center;
+    }
+    .page-header .eyebrow {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0 0 16px;
+    }
+    h1 {
+      font-size: clamp(40px, 6vw, 64px);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.035em;
+      margin: 0 0 20px;
+    }
+    h1 em {
+      font-family: 'Instrument Serif', 'New York', serif;
+      font-weight: 400;
+      font-style: italic;
+      letter-spacing: -0.015em;
+    }
+    .page-lede {
+      font-size: 19px;
+      color: var(--muted);
+      max-width: 44ch;
+      margin: 0 auto;
+      letter-spacing: -0.005em;
+    }
+
+    /* Contact card */
+    .contact-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px 28px;
+      margin: 0 0 64px;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+    .contact-icon {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .contact-icon svg { width: 22px; height: 22px; }
+    .contact-body { flex: 1; }
+    .contact-body strong {
+      display: block;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 2px;
+    }
+    .contact-body span {
+      font-size: 14.5px;
+      color: var(--muted);
+    }
+    .contact-body a { color: var(--accent); font-weight: 500; }
+
+    @media (max-width: 540px) {
+      .contact-card { flex-direction: column; text-align: center; padding: 24px 20px; gap: 14px; }
+    }
+
+    /* FAQ */
+    .faq-section {
+      padding-bottom: 96px;
+    }
+    h2.section-title {
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      margin: 0 0 24px;
+      color: var(--muted);
+      text-transform: uppercase;
+      font-size: 13px;
+      letter-spacing: 0.06em;
+    }
+
+    details {
+      border-bottom: 1px solid var(--border);
+      padding: 22px 0;
+    }
+    details:first-of-type { border-top: 1px solid var(--border); }
+    details summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: -0.015em;
+      color: var(--fg);
+      transition: color .15s ease;
+    }
+    details summary::-webkit-details-marker { display: none; }
+    details summary:hover { color: var(--accent); }
+    details summary::after {
+      content: '';
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14' fill='none' stroke='%236e6e73' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 5l4 4 4-4'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      transition: transform .25s ease;
+    }
+    @media (prefers-color-scheme: dark) {
+      details summary::after {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14' fill='none' stroke='%2386868b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 5l4 4 4-4'/%3E%3C/svg%3E");
+      }
+    }
+    details[open] summary::after { transform: rotate(180deg); }
+    details .answer {
+      margin-top: 14px;
+      color: var(--fg-soft);
+      font-size: 16px;
+      line-height: 1.6;
+      letter-spacing: -0.005em;
+    }
+    details .answer p { margin: 0 0 12px; }
+    details .answer p:last-child { margin-bottom: 0; }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      font-size: 14px;
+      color: var(--muted);
+      letter-spacing: -0.005em;
+    }
+    .footer-grid {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .footer-brand { display: flex; align-items: baseline; gap: 10px; }
+    .footer-brand .brand { font-size: 18px; }
+    .footer-links { display: flex; gap: 28px; }
+    .footer-links a { color: var(--muted); }
+    .footer-links a:hover { color: var(--fg); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="inner">
+      <a href="/" class="brand">Left<span class="dot">.</span></a>
+      <a href="/" class="nav-back">← Back to home</a>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <div class="wrap">
+      <p class="eyebrow">Support</p>
+      <h1>How can we <em>help?</em></h1>
+      <p class="page-lede">A small team builds Left. We read every email, and we genuinely want to hear from you.</p>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="contact-card">
+      <div class="contact-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="5" width="18" height="14" rx="2.5"/>
+          <path d="M3.5 6.5l8.5 7 8.5-7"/>
+        </svg>
+      </div>
+      <div class="contact-body">
+        <strong>Email us anytime</strong>
+        <span><a href="mailto:support@left-budget.com">support@left-budget.com</a> · We usually reply within 1–2 business days.</span>
+      </div>
+    </div>
+  </div>
+
+  <section class="faq-section">
+    <div class="wrap">
+      <h2 class="section-title">Frequently asked</h2>
+
+      <details>
+        <summary>Is Left. really free?</summary>
+        <div class="answer">
+          <p>Yes. The core app — tracking income, bills, transactions, and seeing what you have left to spend — is completely free, with no time limits and no nagging.</p>
+          <p>Left Pro ($9.99 once) is for people who want the long-term picture: the debt payoff calculator, net worth history, unlimited net worth accounts, and savings goals.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Do you have a subscription?</summary>
+        <div class="answer">
+          <p>No. Pro is a one-time purchase of $9.99. Once you have it, you have it forever, on every device signed in with your Apple&nbsp;ID.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Does Left. connect to my bank?</summary>
+        <div class="answer">
+          <p>No, and that's intentional. Left. is a manual-entry app. You log your income, bills, and transactions yourself. That keeps things private, fast, and free of surprise account linkages — and most people find that the small daily ritual is what actually changes their relationship with money.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Where is my data stored?</summary>
+        <div class="answer">
+          <p>On your device, and optionally synced through your own iCloud account using Apple's CloudKit. We don't have servers. We never see your data.</p>
+          <p>If you turn off iCloud for Left. in your iPhone settings, all your data stays exclusively on your device.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Does the AI send my data to a server?</summary>
+        <div class="answer">
+          <p>No. Left Assist, smart categorization, and receipt scanning all run entirely on-device using Apple Intelligence. Your financial data never leaves your iPhone for AI processing. It's never sent to OpenAI, Anthropic, Google, or anyone else.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>How do I restore my Pro purchase?</summary>
+        <div class="answer">
+          <p>Open the app, tap any locked Pro feature, and tap <strong>Restore purchase</strong> at the bottom of the paywall. You can also restore from Settings → Restore Purchase.</p>
+          <p>Make sure you're signed in with the same Apple&nbsp;ID you used to buy Pro originally.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>What if I switch phones?</summary>
+        <div class="answer">
+          <p>Your data syncs through your iCloud account. Sign in to your new phone with the same Apple&nbsp;ID, install Left., and your bills, transactions, income, and accounts will all be there. Pro restores automatically.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Does Left. work on Apple Watch?</summary>
+        <div class="answer">
+          <p>Yes. Check your budget, mark bills paid, and log expenses straight from your wrist. The Watch app syncs with your iPhone through iCloud, so changes show up everywhere.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>I have a feature request.</summary>
+        <div class="answer">
+          <p>Please send it. We keep a running list and prioritize what people actually ask for, not what we think they should want. <a href="mailto:support@left-budget.com?subject=Feature%20request">support@left-budget.com</a></p>
+        </div>
+      </details>
+
+      <details>
+        <summary>How do I delete my data?</summary>
+        <div class="answer">
+          <p>Open Settings inside the app and tap <strong>Erase All Data</strong>. To remove the iCloud copy as well, go to your iPhone's Settings → [Your Name] → iCloud → Manage Account Storage → Left., and delete the data there.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Something's not working.</summary>
+        <div class="answer">
+          <p>Sorry about that. Email <a href="mailto:support@left-budget.com?subject=Bug%20report">support@left-budget.com</a> and include your iPhone model, iOS version, and a quick description of what happened. A screenshot helps a lot. We'll get back to you fast.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="brand">Left<span class="dot">.</span></a>
+        <span>© 2026</span>
+      </div>
+      <div class="footer-links">
+        <a href="/support.html">Support</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="mailto:support@left-budget.com">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
