@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Left. Know what's left to spend.</title>
-  <meta name="description" content="The simplest way to see how much you have left to spend each month. Private by design. One-time purchase. Built for iPhone, Apple Watch, and Apple Intelligence.">
+  <title>Left. See what's left to spend, today.</title>
+  <meta name="description" content="Left. is the budget app that shows you what's left to spend today. No bank login. No subscription. Nothing leaves your iPhone. Includes Left Assist, your on-device money coach.">
 
   <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
 
-  <meta property="og:title" content="Left. Know what's left to spend.">
-  <meta property="og:description" content="The simplest way to see how much you have left to spend each month. Private by design. One-time purchase.">
+  <meta property="og:title" content="Left. See what's left to spend, today.">
+  <meta property="og:description" content="The budget app that shows you what's left to spend today. No bank login. No subscription. Nothing leaves your iPhone.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://left-budget.com">
   <meta name="twitter:card" content="summary_large_image">
@@ -126,7 +126,7 @@
       letter-spacing: 0;
     }
     .nav-links a.cta:hover { opacity: 0.88; color: var(--bg); }
-    @media (max-width: 640px) {
+    @media (max-width: 720px) {
       .nav-links a:not(.cta) { display: none; }
     }
 
@@ -170,7 +170,7 @@
       font-size: clamp(18px, 1.6vw, 21px);
       line-height: 1.5;
       color: var(--muted);
-      max-width: 36ch;
+      max-width: 38ch;
       margin: 0 0 36px;
       letter-spacing: -0.01em;
     }
@@ -268,11 +268,14 @@
     .section-lead {
       font-size: clamp(17px, 1.4vw, 19px);
       color: var(--muted);
-      max-width: 52ch;
+      max-width: 56ch;
       margin: 0;
       letter-spacing: -0.005em;
       line-height: 1.55;
     }
+    .section-head { text-align: center; margin-bottom: 64px; }
+    .section-head h2,
+    .section-head .section-lead { margin-left: auto; margin-right: auto; }
 
     /* Reveal animation */
     .reveal {
@@ -371,23 +374,124 @@
       .live-ring { max-width: 320px; }
     }
 
-    /* ===== APP STORE GALLERY ===== */
-    .gallery-section {
-      padding: 80px 0 60px;
+    /* ===== INCLUDED SECTION ===== */
+    .included-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
     }
-    .gallery-head {
-      text-align: center;
-      margin-bottom: 64px;
+    .feature-card {
+      padding: 32px 28px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      box-shadow: var(--shadow-card);
+      transition: transform .25s ease;
     }
-    .gallery-head h2 {
-      margin-left: auto;
-      margin-right: auto;
+    .feature-card:hover { transform: translateY(-2px); }
+    .feature-card .icon {
+      width: 36px;
+      height: 36px;
+      color: var(--accent);
+      margin-bottom: 20px;
     }
-    .gallery-head .section-lead {
-      margin-left: auto;
-      margin-right: auto;
+    .feature-card strong {
+      display: block;
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      margin-bottom: 6px;
+    }
+    .feature-card span {
+      font-size: 14.5px;
+      color: var(--muted);
+      line-height: 1.5;
+      letter-spacing: -0.005em;
+    }
+    @media (max-width: 860px) {
+      .included-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 540px) {
+      .included-grid { grid-template-columns: 1fr; }
     }
 
+    /* ===== LEFT ASSIST ===== */
+    .assist-section {
+      background: var(--bg-section);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .assist-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .assist-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 980px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      margin-bottom: 16px;
+    }
+    .assist-pill svg { width: 14px; height: 14px; }
+    .assist-foot {
+      margin-top: 28px;
+      font-size: 14px;
+      color: var(--muted);
+      letter-spacing: -0.005em;
+    }
+    .assist-foot .sep { margin: 0 8px; opacity: 0.5; }
+
+    .chat-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 460px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .chat-bubble {
+      padding: 14px 18px;
+      border-radius: 22px;
+      font-size: 16px;
+      line-height: 1.4;
+      letter-spacing: -0.005em;
+      max-width: 88%;
+      box-shadow: var(--shadow-card);
+    }
+    .chat-bubble.q {
+      align-self: flex-end;
+      background: var(--accent);
+      color: white;
+      border-bottom-right-radius: 8px;
+    }
+    .chat-bubble.a {
+      align-self: flex-start;
+      background: var(--bg-elevated);
+      color: var(--fg);
+      border: 1px solid var(--border);
+      border-bottom-left-radius: 8px;
+    }
+    .chat-bubble.a .a-strong { color: var(--accent); font-weight: 600; }
+    @media (max-width: 860px) {
+      .assist-grid { grid-template-columns: 1fr; gap: 48px; }
+      .assist-grid > div:first-child { text-align: center; }
+      .assist-grid > div:first-child .assist-pill { margin-left: auto; margin-right: auto; }
+      .assist-grid > div:first-child h2,
+      .assist-grid > div:first-child .section-lead { margin-left: auto; margin-right: auto; }
+    }
+
+    /* ===== APP STORE GALLERY ===== */
+    .gallery-section {
+      padding: 100px 0 80px;
+    }
     .gallery {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -425,15 +529,76 @@
       .gallery-item.watch-item { padding: 40px 16px; }
     }
 
-    /* ===== APPLE ECOSYSTEM CALLOUT ===== */
-    .ecosystem-section {
+    /* ===== PRIVACY ===== */
+    .privacy-section {
       background: var(--bg-section);
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
       text-align: center;
     }
-    .ecosystem-section h2 { margin-left: auto; margin-right: auto; }
-    .ecosystem-section .section-lead { margin-left: auto; margin-right: auto; }
+    .privacy-headline {
+      font-size: clamp(40px, 5.8vw, 72px);
+      font-weight: 700;
+      line-height: 1.04;
+      letter-spacing: -0.035em;
+      margin: 0 auto 28px;
+      max-width: 22ch;
+    }
+    .privacy-headline .accent { color: var(--accent); }
+    .privacy-lead {
+      font-size: clamp(17px, 1.45vw, 20px);
+      color: var(--muted);
+      max-width: 56ch;
+      margin: 0 auto 56px;
+      line-height: 1.55;
+      letter-spacing: -0.005em;
+    }
+    .privacy-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 920px;
+      margin: 0 auto;
+    }
+    .privacy-tile {
+      padding: 28px 24px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      text-align: left;
+    }
+    .privacy-tile .x {
+      width: 28px;
+      height: 28px;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .privacy-tile strong {
+      display: block;
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      margin-bottom: 6px;
+    }
+    .privacy-tile span {
+      font-size: 14.5px;
+      color: var(--muted);
+      line-height: 1.5;
+      letter-spacing: -0.005em;
+    }
+    .privacy-foot {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 56ch;
+      margin: 40px auto 0;
+      letter-spacing: -0.005em;
+    }
+    @media (max-width: 860px) {
+      .privacy-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ===== ECOSYSTEM ===== */
+    .ecosystem-section { text-align: center; }
     .ecosystem-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -441,7 +606,7 @@
       margin-top: 56px;
     }
     .eco-card {
-      padding: 32px 24px;
+      padding: 28px 22px;
       background: var(--bg-elevated);
       border: 1px solid var(--border);
       border-radius: 20px;
@@ -450,14 +615,14 @@
     }
     .eco-card:hover { transform: translateY(-2px); }
     .eco-card .icon {
-      width: 36px;
-      height: 36px;
+      width: 32px;
+      height: 32px;
       color: var(--accent);
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
     .eco-card strong {
       display: block;
-      font-size: 17px;
+      font-size: 16px;
       font-weight: 600;
       letter-spacing: -0.015em;
       margin-bottom: 6px;
@@ -477,6 +642,9 @@
 
     /* ===== PRO ===== */
     .pro-section {
+      background: var(--bg-section);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
       text-align: center;
     }
     .pro-card {
@@ -562,11 +730,11 @@
       padding: 140px 0;
     }
     .final-cta h2 {
-      max-width: 22ch;
+      max-width: 24ch;
       margin: 0 auto 20px;
     }
     .final-cta .lede {
-      max-width: 44ch;
+      max-width: 48ch;
       margin: 0 auto 36px;
     }
 
@@ -606,7 +774,8 @@
       <a href="/" class="brand">Left<span class="dot">.</span></a>
       <div class="nav-links">
         <a href="#how">How it works</a>
-        <a href="#features">Features</a>
+        <a href="#assist">Assist</a>
+        <a href="#privacy">Privacy</a>
         <a href="#pro">Pro</a>
         <a href="#download" class="cta">Get the app</a>
       </div>
@@ -618,8 +787,8 @@
     <div class="wrap">
       <div class="hero-grid">
         <div class="hero-text reveal in">
-          <h1>Know what's <span class="accent">left.</span></h1>
-          <p class="lede">The simplest way to see how much you have left to spend each month. No bank logins. No subscriptions. Just a number you can trust.</p>
+          <h1>What's <span class="accent">left</span> to spend, today.</h1>
+          <p class="lede">Left. is the budget app that answers the only question that matters. No bank login. No subscription. Nothing leaves your iPhone.</p>
           <div class="cta-row" id="download">
             <a class="app-store-btn" href="#" aria-label="Download on the App Store">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -646,8 +815,8 @@
       <div class="number-grid">
         <div class="reveal">
           <p class="eyebrow">The whole idea</p>
-          <h2>One number. Every month.</h2>
-          <p class="section-lead">Every month opens with one question: how much can I actually spend? Left. answers it. The ring fills as you spend and save. The number updates the moment you log a transaction. That's it. That's the app.</p>
+          <h2>How much can I spend today?</h2>
+          <p class="section-lead">Set your income. Add your bills. Start each month with a full ring. As you spend, it depletes. The big number under the ring updates the moment you log a transaction. That's the app.</p>
         </div>
         <div class="reveal">
           <div class="live-ring" id="liveRing" aria-hidden="true">
@@ -666,10 +835,94 @@
     </div>
   </section>
 
-  <!-- APP STORE GALLERY -->
-  <section class="gallery-section" id="features">
+  <!-- WHAT'S INCLUDED -->
+  <section id="features">
     <div class="wrap">
-      <div class="gallery-head reveal">
+      <div class="section-head reveal">
+        <p class="eyebrow">Free, for everyone</p>
+        <h2>Everything you need, included.</h2>
+        <p class="section-lead">No paywall on the parts that matter. Download Left. and you get the whole budget, built for the way you actually live.</p>
+      </div>
+      <div class="included-grid">
+        <div class="feature-card reveal">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 12h4l3-8 4 16 3-8h4"/>
+          </svg>
+          <strong>Income, bills, and expenses</strong>
+          <span>Track every dollar in and out, recurring or one-time, on a single honest timeline.</span>
+        </div>
+        <div class="feature-card reveal">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="6" width="18" height="14" rx="3"/><path d="M3 11h18"/><path d="M8 16h3"/>
+          </svg>
+          <strong>Spending limits by category</strong>
+          <span>Cap groceries, dining, fun money, anything you want. See the runway for each category as you go.</span>
+        </div>
+        <div class="feature-card reveal">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="9"/><polyline points="12,7 12,12 15.5,14"/>
+          </svg>
+          <strong>A daily spending budget</strong>
+          <span>The number that updates with you. Spend a little less today, get a little more tomorrow.</span>
+        </div>
+        <div class="feature-card reveal">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 8V6a2 2 0 0 1 2-2h2"/><path d="M16 4h2a2 2 0 0 1 2 2v2"/><path d="M20 16v2a2 2 0 0 1-2 2h-2"/><path d="M8 20H6a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="12" r="3.5"/>
+          </svg>
+          <strong>Scan receipts with your camera</strong>
+          <span>Point, capture, done. Merchant and total fill themselves in. No typing required.</span>
+        </div>
+        <div class="feature-card reveal">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="7" y="3" width="10" height="18" rx="3"/><path d="M8 3l.5-1.5h7L16 3"/><path d="M8 21l.5 1.5h7l.5-1.5"/>
+          </svg>
+          <strong>Apple Watch, widgets &amp; Siri</strong>
+          <span>Log an expense from your wrist. Glance at what's left from your Home Screen. Ask Siri to add it.</span>
+        </div>
+        <div class="feature-card reveal">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3l8 4v5c0 5-3.5 8.5-8 9-4.5-.5-8-4-8-9V7l8-4z"/><polyline points="9,12 11,14 15,10"/>
+          </svg>
+          <strong>Private by design</strong>
+          <span>No account, no cloud servers, no analytics, no tracking. Your data never leaves your iPhone.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEFT ASSIST -->
+  <section class="assist-section" id="assist">
+    <div class="wrap">
+      <div class="assist-grid">
+        <div class="reveal">
+          <span class="assist-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/>
+            </svg>
+            Left Assist · Apple Intelligence
+          </span>
+          <h2>Your on-device money coach.</h2>
+          <p class="section-lead">Ask anything in plain English. Answers come from your own numbers, computed on your iPhone. Nothing sent to a server, ever.</p>
+          <p class="assist-foot">Available on iPhone 15 Pro and later<span class="sep">·</span>Free for everyone</p>
+        </div>
+        <div class="reveal">
+          <div class="chat-stack">
+            <div class="chat-bubble q">Am I on track this month?</div>
+            <div class="chat-bubble a">Yes. You've spent <span class="a-strong">62%</span> with 9 days left, and you're about <span class="a-strong">$140</span> ahead of pace.</div>
+            <div class="chat-bubble q">Where am I overspending?</div>
+            <div class="chat-bubble a">Dining is at <span class="a-strong">118%</span> of your monthly cap. Everything else is on plan.</div>
+            <div class="chat-bubble q">How much for groceries last week?</div>
+            <div class="chat-bubble a">$112.40 across 4 trips, about <span class="a-strong">$18 less</span> than the week before.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery-section">
+    <div class="wrap">
+      <div class="section-head reveal">
         <p class="eyebrow">Inside the app</p>
         <h2>Every screen, designed with care.</h2>
         <p class="section-lead">A complete look at the app, the widget, and the Apple Watch companion.</p>
@@ -698,13 +951,48 @@
     </div>
   </section>
 
+  <!-- PRIVACY -->
+  <section class="privacy-section" id="privacy">
+    <div class="wrap">
+      <div class="reveal">
+        <p class="eyebrow">Private by design</p>
+        <h2 class="privacy-headline">Nothing leaves your <span class="accent">iPhone.</span></h2>
+        <p class="privacy-lead">Everything in Left. runs on your device. iCloud sync between your devices uses Apple's end-to-end encryption. Even we can't see your data.</p>
+      </div>
+      <div class="privacy-grid">
+        <div class="privacy-tile reveal">
+          <svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="8" r="3.5"/><path d="M5 21c.7-3.5 3.7-6 7-6s6.3 2.5 7 6"/>
+          </svg>
+          <strong>No account</strong>
+          <span>No sign-up, no email, no password. Open the app and start using it.</span>
+        </div>
+        <div class="privacy-tile reveal">
+          <svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M7 18h10a4 4 0 0 0 .5-7.97A6 6 0 0 0 6.1 9.2 4.5 4.5 0 0 0 7 18z"/>
+          </svg>
+          <strong>No cloud servers</strong>
+          <span>Nothing of yours sits on our infrastructure. There isn't any to sit on.</span>
+        </div>
+        <div class="privacy-tile reveal">
+          <svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="9"/>
+          </svg>
+          <strong>No analytics, no tracking</strong>
+          <span>We don't measure your behavior. We don't know your habits. We don't want to.</span>
+        </div>
+      </div>
+      <p class="privacy-foot">Compare that with bank-linked budget apps, and the credentials they ask you to hand over.</p>
+    </div>
+  </section>
+
   <!-- APPLE ECOSYSTEM -->
   <section class="ecosystem-section">
     <div class="wrap">
       <div class="reveal">
         <p class="eyebrow">Built for Apple</p>
-        <h2>Native through and through.</h2>
-        <p class="section-lead">Built in Swift, designed for iPhone first. No web wrappers. No cross-platform compromises.</p>
+        <h2 style="margin-left:auto;margin-right:auto;">Native through and through.</h2>
+        <p class="section-lead" style="margin-left:auto;margin-right:auto;">Built in Swift, designed for iPhone first. No web wrappers. No cross-platform compromises.</p>
       </div>
       <div class="ecosystem-grid">
         <div class="eco-card reveal">
@@ -712,21 +1000,21 @@
             <rect x="7" y="2" width="10" height="20" rx="2.5"/><line x1="11" y1="18.5" x2="13" y2="18.5"/>
           </svg>
           <strong>iPhone &amp; iPad</strong>
-          <span>Optimized for every screen size, from iPhone SE to iPad Pro.</span>
+          <span>Optimized for every screen, from iPhone SE to iPad Pro.</span>
         </div>
         <div class="eco-card reveal">
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <rect x="6" y="5" width="12" height="14" rx="3"/><path d="M9 5l.5-2h5L15 5"/><path d="M9 19l.5 2h5l.5-2"/>
           </svg>
           <strong>Apple Watch</strong>
-          <span>Check your budget, mark bills paid, and log expenses from your wrist.</span>
+          <span>Check what's left, mark bills paid, and log expenses from your wrist.</span>
         </div>
         <div class="eco-card reveal">
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/>
           </svg>
-          <strong>Widgets &amp; Shortcuts</strong>
-          <span>Home and Lock Screen widgets. Add expenses with a Siri command.</span>
+          <strong>Widgets &amp; Siri</strong>
+          <span>Home and Lock Screen widgets. Add an expense with a Siri command.</span>
         </div>
         <div class="eco-card reveal">
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -753,11 +1041,10 @@
           <div class="pro-price">$9.99<small>once</small></div>
         </div>
         <ul class="pro-features">
-          <li><span class="check"><svg viewBox="0 0 16 16" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8 7,12 13,4"/></svg></span><span>Debt payoff calculator with snowball and avalanche</span></li>
-          <li><span class="check"><svg viewBox="0 0 16 16" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8 7,12 13,4"/></svg></span><span>Net worth history, charted from day one</span></li>
-          <li><span class="check"><svg viewBox="0 0 16 16" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8 7,12 13,4"/></svg></span><span>Unlimited net worth accounts</span></li>
-          <li><span class="check"><svg viewBox="0 0 16 16" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8 7,12 13,4"/></svg></span><span>Savings goals with monthly targets</span></li>
-          <li><span class="check"><svg viewBox="0 0 16 16" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8 7,12 13,4"/></svg></span><span>AI-explained debt strategies, in plain English</span></li>
+          <li><span class="check"><svg viewBox="0 0 16 16" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8 7,12 13,4"/></svg></span><span>Net Worth tracking, charted from day one</span></li>
+          <li><span class="check"><svg viewBox="0 0 16 16" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8 7,12 13,4"/></svg></span><span>Assets: homes, vehicles, investments, anything you own</span></li>
+          <li><span class="check"><svg viewBox="0 0 16 16" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8 7,12 13,4"/></svg></span><span>Side-by-side debt payoff strategies (snowball &amp; avalanche)</span></li>
+          <li><span class="check"><svg viewBox="0 0 16 16" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8 7,12 13,4"/></svg></span><span>All future updates included</span></li>
         </ul>
         <p class="pro-foot">One-time purchase<span class="sep">·</span>No subscription<span class="sep">·</span>Family Sharing eligible</p>
       </div>
@@ -768,8 +1055,8 @@
   <section class="final-cta">
     <div class="wrap">
       <div class="reveal">
-        <h2>Stop guessing. Start knowing.</h2>
-        <p class="lede">Free to download. Yours forever.</p>
+        <h2>An alternative to bank-linked budget apps.</h2>
+        <p class="lede">No monthly fee. No data harvesting. Just the number you came for. Free to download. Yours forever.</p>
         <a class="app-store-btn" href="#" aria-label="Download Left on the App Store">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
