@@ -3,15 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy — Left.</title>
+  <title>Privacy · Left.</title>
   <meta name="description" content="Left. has no servers, no accounts, and no analytics. Here's exactly what that means for your data.">
 
   <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
 
   <style>
     *, *::before, *::after { box-sizing: border-box; }
@@ -115,11 +111,8 @@
       letter-spacing: -0.035em;
       margin: 0 0 20px;
     }
-    h1 em {
-      font-family: 'Instrument Serif', 'New York', serif;
-      font-weight: 400;
-      font-style: italic;
-      letter-spacing: -0.015em;
+    h1 .accent {
+      color: var(--accent);
     }
     .page-lede {
       font-size: 20px;
@@ -265,7 +258,7 @@
   <header class="page-header">
     <div class="wrap">
       <p class="eyebrow">Privacy</p>
-      <h1>Your money is <em>your</em> business.</h1>
+      <h1>Your money is <span class="accent">your</span> business.</h1>
       <p class="page-lede">Left. is built on a simple promise. Here's exactly what that promise looks like in practice.</p>
     </div>
   </header>
@@ -304,10 +297,10 @@
       <h2>Apple Intelligence and on-device AI</h2>
       <p>Several Left. features use Apple Intelligence:</p>
       <ul>
-        <li><strong>Smart categorization</strong> — guesses the category for a new expense as you type</li>
-        <li><strong>Receipt scanning</strong> — auto-fills merchant, total, and date from a photo</li>
-        <li><strong>Monthly snapshot</strong> — an AI-written summary of how your month is going</li>
-        <li><strong>Left Assist</strong> — the in-app AI budget coach</li>
+        <li><strong>Smart categorization.</strong> Guesses the category for a new expense as you type.</li>
+        <li><strong>Receipt scanning.</strong> Auto-fills merchant, total, and date from a photo.</li>
+        <li><strong>Monthly snapshot.</strong> An AI-written summary of how your month is going.</li>
+        <li><strong>Left Assist.</strong> The in-app AI budget coach.</li>
       </ul>
       <p>All of these run <strong>on your device</strong>, using Apple's on-device foundation models. Your financial data is never sent to OpenAI, Anthropic, Google, or any other third party. Nothing leaves your iPhone for AI processing.</p>
 
@@ -316,10 +309,10 @@
       <p>If you want to verify this, you're welcome to ask. We can walk you through exactly what's in the binary: <a href="mailto:support@left-budget.com">support@left-budget.com</a>.</p>
 
       <h2>Payments</h2>
-      <p>When you purchase Left. Pro, the purchase is handled entirely by Apple through the App Store. We don't see your credit card information, your billing address, your name, or your email. Apple may share aggregated, anonymized purchase reports with us — for example, "ten people bought Pro in Germany this week." We use those only to understand the business.</p>
+      <p>When you purchase Left. Pro, the purchase is handled entirely by Apple through the App Store. We don't see your credit card information, your billing address, your name, or your email. Apple may share aggregated, anonymized purchase reports with us, for example, "ten people bought Pro in Germany this week." We use those only to understand the business.</p>
 
       <h2>Children</h2>
-      <p>Left. is not directed at children under 13. We don't knowingly collect any information from anyone — including children — because we don't collect anything at all.</p>
+      <p>Left. is not directed at children under 13. We don't knowingly collect any information from anyone, including children, because we don't collect anything at all.</p>
 
       <h2>Deleting your data</h2>
       <p>Open Settings inside the app and tap <strong>Erase All Data</strong> to delete everything from your device. To also remove the iCloud copy, go to your iPhone's Settings → [Your Name] → iCloud → Manage Account Storage → Left., and delete the data there. Once deleted, it cannot be recovered.</p>
