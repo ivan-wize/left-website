@@ -516,20 +516,9 @@
       height: auto;
       display: block;
     }
-    .gallery-item.watch-item {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 60px 24px;
-      min-height: 100%;
-    }
-    .gallery-item.watch-item img {
-      max-width: 360px;
-    }
 
     @media (max-width: 720px) {
       .gallery { grid-template-columns: 1fr; gap: 20px; }
-      .gallery-item.watch-item { padding: 40px 16px; }
     }
 
     /* ===== PRIVACY ===== */
@@ -806,7 +795,7 @@
           </div>
         </div>
         <div class="hero-phone reveal in">
-          <img src="screenshots/hero-phone.jpg" alt="Left. Overview screen showing $1,623.45 left to spend" loading="eager">
+          <img src="screenshots/hero-phone.jpg" alt="Left. Overview screen showing $2,128.37 left to spend" loading="eager">
         </div>
       </div>
     </div>
@@ -830,7 +819,7 @@
             <div class="ring-center">
               <span class="ring-label">Left to spend</span>
               <span class="ring-amount" id="ringAmount">$0.00</span>
-              <span class="ring-sub">≈$135.29/day through May&nbsp;31</span>
+              <span class="ring-sub">≈$354.73/day through May&nbsp;31</span>
             </div>
           </div>
         </div>
@@ -933,22 +922,28 @@
 
       <div class="gallery">
         <div class="gallery-item reveal">
-          <img src="screenshots/expenses-full.jpg" alt="Never miss a bill again. Every due date, every payment, one tap." loading="lazy">
+          <img src="screenshots/overview-full.jpg" alt="Always know what's left. No bank login. No subscription." loading="lazy">
         </div>
         <div class="gallery-item reveal">
-          <img src="screenshots/assist-full.jpg" alt="Ask anything. On your device. Free, private, never sent anywhere." loading="lazy">
+          <img src="screenshots/tap-to-log-full.jpg" alt="Tap to log. Done in seconds. Suggestions learn your routine." loading="lazy">
         </div>
         <div class="gallery-item reveal">
-          <img src="screenshots/plan-full.jpg" alt="Your whole picture, not just this month. Assets, debt, and net worth tracked over time." loading="lazy">
+          <img src="screenshots/income-full.jpg" alt="Every dollar in. Tracked. Paychecks, side gigs, and one-offs. Confirmed." loading="lazy">
         </div>
         <div class="gallery-item reveal">
-          <img src="screenshots/widget-full.jpg" alt="Your money, at a glance. Right there on your Home Screen. No tap required." loading="lazy">
+          <img src="screenshots/patterns-full.jpg" alt="Find the patterns. Cut the leaks. Spending by category, at a glance." loading="lazy">
         </div>
         <div class="gallery-item reveal">
-          <img src="screenshots/privacy-full.jpg" alt="Your data stays yours. iCloud sync. No accounts. No tracking." loading="lazy">
+          <img src="screenshots/networth-full.jpg" alt="Your whole picture. Not just this month. Assets, debt, and net worth tracked over time." loading="lazy">
         </div>
-        <div class="gallery-item watch-item reveal">
-          <img src="screenshots/watch-full.jpg" alt="Your budget. On your wrist. See what's left, bills, and income in seconds." loading="lazy">
+        <div class="gallery-item reveal">
+          <img src="screenshots/assist-full.jpg" alt="Ask anything. On your device. Free. Private. Never sent anywhere." loading="lazy">
+        </div>
+        <div class="gallery-item reveal">
+          <img src="screenshots/privacy-full.jpg" alt="Your data stays yours. Always. iCloud sync. No accounts. No tracking." loading="lazy">
+        </div>
+        <div class="gallery-item reveal">
+          <img src="screenshots/widget-full.jpg" alt="A glance is all it takes. Today's number on your Home Screen." loading="lazy">
         </div>
       </div>
     </div>
@@ -1115,7 +1110,7 @@
       const amountEl = document.getElementById('ringAmount');
       if (!ring || !amountEl) return;
 
-      const target = 1623.45;
+      const target = 2128.37;
       const fmt = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
 
       const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
