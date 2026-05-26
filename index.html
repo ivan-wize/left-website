@@ -516,9 +516,19 @@
       height: auto;
       display: block;
     }
+    .gallery-item.watch-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 24px;
+    }
+    .gallery-item.watch-item img {
+      max-width: 360px;
+    }
 
     @media (max-width: 720px) {
       .gallery { grid-template-columns: 1fr; gap: 20px; }
+      .gallery-item.watch-item { padding: 40px 16px; }
     }
 
     /* ===== PRIVACY ===== */
@@ -944,6 +954,9 @@
         </div>
         <div class="gallery-item reveal">
           <img src="screenshots/widget-full.jpg" alt="A glance is all it takes. Today's number on your Home Screen." loading="lazy">
+        </div>
+        <div class="gallery-item watch-item reveal">
+          <img src="screenshots/watch-full.jpg" alt="Pay bills. From your wrist. Check off bills as you pay them. Your ring updates instantly." loading="lazy">
         </div>
       </div>
     </div>
