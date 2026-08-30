@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Left. See what's left to spend, today. | iPhone budget app</title>
-  <meta name="description" content="Left. shows what's left to spend today. No bank login, no subscription, no tracking. Private iCloud sync, and Left Assist runs on your iPhone.">
+  <title>Left. — Private budget app for iPhone. No subscription.</title>
+  <meta name="description" content="Left. shows what you have left to spend today. No bank login, no tracking, no account, no subscription. Private budgeting for iPhone, Apple Watch and iCloud.">
 
   <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
@@ -14,8 +14,8 @@
   <meta name="apple-itunes-app" content="app-id=6761345386">
   <link rel="canonical" href="https://left-budget.com/">
 
-  <meta property="og:title" content="Left. See what's left to spend, today.">
-  <meta property="og:description" content="The budget app that shows you what's left to spend today. No bank login. No subscription. No tracking. Private iCloud sync.">
+  <meta property="og:title" content="Left. — Private budgeting. No subscription.">
+  <meta property="og:description" content="Left. shows what you have left to spend today, from numbers you enter yourself. No bank login. No tracking. No account. Private budgeting for iPhone.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://left-budget.com/">
   <meta property="og:site_name" content="Left.">
@@ -26,8 +26,8 @@
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:alt" content="Private budgeting. No subscription. The Left. Overview screen showing $1,788 left to spend of $6,500 income.">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Left. See what's left to spend, today.">
-  <meta name="twitter:description" content="The budget app that shows you what's left to spend today. No bank login. No subscription. No tracking. Private iCloud sync.">
+  <meta name="twitter:title" content="Left. — Private budgeting. No subscription.">
+  <meta name="twitter:description" content="Left. shows what you have left to spend today, from numbers you enter yourself. No bank login. No tracking. No account. Private budgeting for iPhone.">
   <meta name="twitter:image" content="https://left-budget.com/og-image.jpg">
   <meta name="twitter:image:alt" content="Private budgeting. No subscription. The Left. Overview screen showing $1,788 left to spend of $6,500 income.">
 
@@ -40,7 +40,7 @@
     "url": "https://left-budget.com/",
     "applicationCategory": "FinanceApplication",
     "operatingSystem": "iOS, watchOS",
-    "description": "Left. shows what's left to spend today. No bank login, no subscription, no tracking. Private iCloud sync, and Left Assist runs on your iPhone.",
+    "description": "Left. shows what you have left to spend today. No bank login, no tracking, no account, no subscription. Private budgeting for iPhone, Apple Watch and iCloud.",
     "image": "https://left-budget.com/og-image.jpg",
     "installUrl": "https://apps.apple.com/app/id6761345386",
     "offers": [
@@ -240,7 +240,7 @@
       z-index: 1;
     }
     h1 {
-      font-size: clamp(3rem, 7.5vw, 5.5rem);
+      font-size: clamp(2.125rem, 5.6vw, 4rem);
       font-weight: 700;
       line-height: 1.02;
       letter-spacing: -0.04em;
@@ -302,6 +302,35 @@
     }
     .subtle .sep { margin: 0 8px; opacity: 0.5; }
 
+    /* Hero trust strip — the privacy / Apple-native / pricing proof, above the fold */
+    .trust-strip {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px 24px;
+      max-width: 460px;
+      margin: 32px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .trust-strip li {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 0.875rem;
+      color: var(--fg-soft);
+      line-height: 1.35;
+    }
+    .trust-strip svg {
+      width: 17px;
+      height: 17px;
+      flex-shrink: 0;
+      color: var(--accent-text);
+    }
+    .trust-strip .sep { margin: 0 5px; opacity: 0.5; }
+    @media (max-width: 560px) {
+      .trust-strip { grid-template-columns: 1fr; gap: 12px; }
+    }
+
     .hero-phone {
       position: relative;
       display: flex;
@@ -332,6 +361,13 @@
       }
       .lede { margin-left: auto; margin-right: auto; }
       .cta-row { align-items: center; }
+      .trust-strip {
+        width: max-content;
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: left;
+      }
       .hero-phone img { max-width: 320px; }
     }
 
@@ -902,8 +938,8 @@
     <div class="wrap">
       <div class="hero-grid">
         <div class="hero-text reveal in">
-          <h1>What's <span class="accent">left</span> to spend, today.</h1>
-          <p class="lede">Left. is the budget app that answers the only question that matters. No bank login. No subscription. No tracking. Private iCloud sync.</p>
+          <h1><span class="accent">Private</span> budgeting.<br>No subscription.</h1>
+          <p class="lede">Left. shows what you have left to spend today, from numbers you enter yourself. No bank login. No tracking. No account.</p>
           <div class="cta-row" id="download">
             <a class="app-store-btn" href="https://apps.apple.com/app/id6761345386" aria-label="Download on the App Store">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -914,8 +950,25 @@
                 <strong>App Store</strong>
               </span>
             </a>
-            <span class="subtle">Free<span class="sep">·</span>iPhone &amp; Apple Watch<span class="sep">·</span>Pro is $9.99 once</span>
           </div>
+          <ul class="trust-strip">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg>
+              <span>No bank login</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2.5"/><line x1="11" y1="18.5" x2="13" y2="18.5"/></svg>
+              <span>Nothing leaves your iPhone</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="5" width="12" height="14" rx="3"/><path d="M9 5l.5-2h5L15 5"/><path d="M9 19l.5 2h5l.5-2"/></svg>
+              <span>iPhone, Watch &amp; Siri</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 13.4 12 22l-9-9V4h9l8.6 8.6a2 2 0 0 1 0 2.8z"/><circle cx="7.6" cy="7.6" r="1.2"/></svg>
+              <span>Free<span class="sep">·</span>Pro is $9.99 once</span>
+            </li>
+          </ul>
         </div>
         <div class="hero-phone reveal in">
           <picture>
