@@ -41,6 +41,17 @@
       --accent-soft: rgba(52, 199, 89, 0.12);
       --border: rgba(0, 0, 0, 0.08);
       --nav-bg: rgba(251, 251, 253, 0.72);
+
+      /* Apple's optical tracking scale. SF Text (under 20px) is drawn wide for
+         legibility so it needs negative tracking; SF Display (20px and up) is
+         already tight and opens back up as the size grows. */
+      --track-hero: -0.015em;     /* 56px and up */
+      --track-title: -0.005em;    /* 34px to 48px */
+      --track-heading: 0.004em;   /* 26px to 32px */
+      --track-lead: 0.009em;      /* 20px to 24px */
+      --track-body: -0.022em;     /* 16px to 19px */
+      --track-small: -0.016em;    /* 14px to 15px */
+      --track-caption: -0.01em;   /* 11px to 13px */
     }
 
     @media (prefers-color-scheme: dark) {
@@ -69,9 +80,9 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       text-rendering: optimizeLegibility;
-      line-height: 1.55;
+      line-height: 1.47059;
       font-size: 1.0625rem;
-      letter-spacing: -0.005em;
+      letter-spacing: var(--track-body);
     }
 
     .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
@@ -104,15 +115,16 @@
       justify-content: space-between;
     }
     .brand {
-      font-weight: 700;
+      font-weight: 600;
       font-size: 1.375rem;
-      letter-spacing: -0.025em;
+      letter-spacing: -0.02em;
       color: var(--fg);
     }
     .brand .dot { color: var(--accent); }
     .nav-back {
       color: var(--muted);
       font-size: 0.90625rem;
+      letter-spacing: var(--track-small);
       transition: color .15s ease;
     }
     .nav-back:hover { color: var(--fg); text-decoration: none; }
@@ -132,9 +144,9 @@
     }
     h1 {
       font-size: clamp(2.5rem, 6vw, 4rem);
-      font-weight: 700;
-      line-height: 1.05;
-      letter-spacing: -0.035em;
+      font-weight: 600;
+      line-height: 1.06;
+      letter-spacing: var(--track-title);
       margin: 0 0 20px;
     }
     h1 .accent {
@@ -145,7 +157,7 @@
       color: var(--muted);
       max-width: 44ch;
       margin: 0 auto;
-      letter-spacing: -0.005em;
+      letter-spacing: var(--track-body);
     }
 
     /* Contact card */
@@ -176,12 +188,13 @@
       display: block;
       font-size: 1rem;
       font-weight: 600;
-      letter-spacing: -0.01em;
+      letter-spacing: var(--track-body);
       margin-bottom: 2px;
     }
     .contact-body span {
       font-size: 0.90625rem;
       color: var(--muted);
+      letter-spacing: var(--track-small);
     }
     .contact-body a { color: var(--accent); font-weight: 500; }
 
@@ -194,14 +207,12 @@
       padding-bottom: 96px;
     }
     h2.section-title {
-      font-size: 1.375rem;
+      font-size: 0.8125rem;
       font-weight: 600;
-      letter-spacing: -0.015em;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
       margin: 0 0 24px;
       color: var(--muted);
-      text-transform: uppercase;
-      font-size: 0.8125rem;
-      letter-spacing: 0.06em;
     }
 
     details {
@@ -218,7 +229,7 @@
       gap: 16px;
       font-size: 1.125rem;
       font-weight: 500;
-      letter-spacing: -0.015em;
+      letter-spacing: var(--track-body);
       color: var(--fg);
       transition: color .15s ease;
     }
@@ -246,8 +257,8 @@
       margin-top: 14px;
       color: var(--fg-soft);
       font-size: 1rem;
-      line-height: 1.6;
-      letter-spacing: -0.005em;
+      line-height: 1.47059;
+      letter-spacing: var(--track-body);
     }
     details .answer p { margin: 0 0 12px; }
     details .answer p:last-child { margin-bottom: 0; }
@@ -258,7 +269,7 @@
       padding: 40px 0;
       font-size: 0.875rem;
       color: var(--muted);
-      letter-spacing: -0.005em;
+      letter-spacing: var(--track-small);
     }
     .footer-grid {
       max-width: 1120px;

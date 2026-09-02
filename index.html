@@ -69,6 +69,17 @@
       --shadow-tile: 0 1px 3px rgba(0, 0, 0, 0.04), 0 12px 40px -10px rgba(0, 0, 0, 0.08);
       --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.04), 0 8px 24px -6px rgba(0, 0, 0, 0.06);
       --nav-bg: rgba(251, 251, 253, 0.72);
+
+      /* Apple's optical tracking scale. SF Text (under 20px) is drawn wide for
+         legibility so it needs negative tracking; SF Display (20px and up) is
+         already tight and opens back up as the size grows. */
+      --track-hero: -0.015em;     /* 56px and up */
+      --track-title: -0.005em;    /* 34px to 48px */
+      --track-heading: 0.004em;   /* 26px to 32px */
+      --track-lead: 0.009em;      /* 20px to 24px */
+      --track-body: -0.022em;     /* 16px to 19px */
+      --track-small: -0.016em;    /* 14px to 15px */
+      --track-caption: -0.01em;   /* 11px to 13px */
     }
 
     @media (prefers-color-scheme: dark) {
@@ -107,9 +118,9 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       text-rendering: optimizeLegibility;
-      line-height: 1.5;
+      line-height: 1.47059;
       font-size: 1.0625rem;
-      letter-spacing: -0.005em;
+      letter-spacing: var(--track-body);
     }
 
     .wrap {
@@ -146,6 +157,7 @@
       color: var(--bg);
       font-size: 0.875rem;
       font-weight: 500;
+      letter-spacing: var(--track-small);
       transition: top .18s ease;
     }
     .skip-link:focus-visible { top: 12px; color: var(--bg); }
@@ -170,9 +182,9 @@
       gap: 24px;
     }
     .brand {
-      font-weight: 700;
+      font-weight: 600;
       font-size: 1.375rem;
-      letter-spacing: -0.025em;
+      letter-spacing: -0.02em;
       line-height: 1;
       display: inline-flex;
       align-items: baseline;
@@ -187,6 +199,7 @@
       color: var(--fg-soft);
       font-size: 0.90625rem;
       font-weight: 400;
+      letter-spacing: var(--track-small);
       transition: color .15s ease;
     }
     .nav-links a:hover { color: var(--fg); }
@@ -197,7 +210,7 @@
       border-radius: 980px;
       font-weight: 500;
       font-size: 0.875rem;
-      letter-spacing: 0;
+      letter-spacing: var(--track-small);
     }
     .nav-links a.cta:hover { opacity: 0.88; color: var(--bg); }
     @media (max-width: 720px) {
@@ -241,9 +254,9 @@
     }
     h1 {
       font-size: clamp(2.125rem, 5.6vw, 4rem);
-      font-weight: 700;
-      line-height: 1.02;
-      letter-spacing: -0.04em;
+      font-weight: 600;
+      line-height: 1.06;
+      letter-spacing: var(--track-title);
       margin: 0 0 24px;
       color: var(--fg);
     }
@@ -252,11 +265,11 @@
     }
     .lede {
       font-size: clamp(1.125rem, 1.6vw, 1.3125rem);
-      line-height: 1.5;
+      line-height: 1.4;
       color: var(--muted);
       max-width: 38ch;
       margin: 0 0 36px;
-      letter-spacing: -0.01em;
+      letter-spacing: var(--track-lead);
     }
     .cta-row {
       display: flex;
@@ -288,17 +301,17 @@
     .app-store-btn small {
       font-size: 0.6875rem;
       opacity: 0.85;
-      letter-spacing: 0;
+      letter-spacing: var(--track-caption);
     }
     .app-store-btn strong {
       font-size: 1.125rem;
       font-weight: 600;
-      letter-spacing: -0.01em;
+      letter-spacing: var(--track-body);
     }
     .subtle {
       font-size: 0.875rem;
       color: var(--muted);
-      letter-spacing: -0.005em;
+      letter-spacing: var(--track-small);
     }
     .subtle .sep { margin: 0 8px; opacity: 0.5; }
 
@@ -318,7 +331,8 @@
       gap: 9px;
       font-size: 0.875rem;
       color: var(--fg-soft);
-      line-height: 1.35;
+      line-height: 1.42857;
+      letter-spacing: var(--track-small);
     }
     .trust-strip svg {
       width: 17px;
@@ -389,9 +403,9 @@
     }
     h2 {
       font-size: clamp(2.125rem, 4.6vw, 3.5rem);
-      font-weight: 700;
-      line-height: 1.05;
-      letter-spacing: -0.03em;
+      font-weight: 600;
+      line-height: 1.06;
+      letter-spacing: var(--track-title);
       margin: 0 0 20px;
       max-width: 18ch;
     }
@@ -400,8 +414,8 @@
       color: var(--muted);
       max-width: 56ch;
       margin: 0;
-      letter-spacing: -0.005em;
-      line-height: 1.55;
+      letter-spacing: var(--track-body);
+      line-height: 1.47059;
     }
     h1, h2, .privacy-headline { text-wrap: balance; }
     .lede, .section-lead, .privacy-lead, .feature-card span, .eco-card span, .privacy-tile span { text-wrap: pretty; }
@@ -483,13 +497,13 @@
       font-size: 1rem;
       color: var(--muted);
       font-weight: 400;
-      letter-spacing: -0.005em;
+      letter-spacing: var(--track-body);
     }
     .ring-amount {
       font-size: clamp(2.5rem, 6.5vw, 4rem);
-      font-weight: 700;
+      font-weight: 600;
       color: var(--accent-text);
-      letter-spacing: -0.035em;
+      letter-spacing: var(--track-hero);
       line-height: 1;
       font-variant-numeric: tabular-nums;
       font-feature-settings: 'tnum';
@@ -498,7 +512,7 @@
       font-size: 0.875rem;
       color: var(--muted);
       margin-top: 6px;
-      letter-spacing: -0.005em;
+      letter-spacing: var(--track-small);
     }
     @media (max-width: 860px) {
       .number-grid { grid-template-columns: 1fr; gap: 48px; }
@@ -533,14 +547,14 @@
       display: block;
       font-size: 1.0625rem;
       font-weight: 600;
-      letter-spacing: -0.015em;
+      letter-spacing: var(--track-body);
       margin-bottom: 6px;
     }
     .feature-card span {
       font-size: 0.90625rem;
       color: var(--muted);
-      line-height: 1.5;
-      letter-spacing: -0.005em;
+      line-height: 1.42857;
+      letter-spacing: var(--track-small);
     }
     @media (max-width: 860px) {
       .included-grid { grid-template-columns: repeat(2, 1fr); }
@@ -571,7 +585,7 @@
       color: var(--accent-text);
       font-size: 0.8125rem;
       font-weight: 600;
-      letter-spacing: 0.01em;
+      letter-spacing: var(--track-caption);
       margin-bottom: 16px;
     }
     .assist-pill svg { width: 14px; height: 14px; }
@@ -579,7 +593,7 @@
       margin-top: 28px;
       font-size: 0.875rem;
       color: var(--muted);
-      letter-spacing: -0.005em;
+      letter-spacing: var(--track-small);
     }
     .assist-foot .sep { margin: 0 8px; opacity: 0.5; }
 
@@ -595,8 +609,8 @@
       padding: 14px 18px;
       border-radius: 22px;
       font-size: 1rem;
-      line-height: 1.4;
-      letter-spacing: -0.005em;
+      line-height: 1.47059;
+      letter-spacing: var(--track-body);
       max-width: 88%;
       box-shadow: var(--shadow-card);
     }
@@ -673,9 +687,9 @@
     }
     .privacy-headline {
       font-size: clamp(2.5rem, 5.8vw, 4.5rem);
-      font-weight: 700;
-      line-height: 1.04;
-      letter-spacing: -0.035em;
+      font-weight: 600;
+      line-height: 1.05;
+      letter-spacing: var(--track-hero);
       margin: 0 auto 28px;
       max-width: 22ch;
     }
@@ -685,8 +699,8 @@
       color: var(--muted);
       max-width: 56ch;
       margin: 0 auto 56px;
-      line-height: 1.55;
-      letter-spacing: -0.005em;
+      line-height: 1.47059;
+      letter-spacing: var(--track-body);
     }
     .privacy-grid {
       display: grid;
@@ -712,21 +726,21 @@
       display: block;
       font-size: 1.0625rem;
       font-weight: 600;
-      letter-spacing: -0.015em;
+      letter-spacing: var(--track-body);
       margin-bottom: 6px;
     }
     .privacy-tile span {
       font-size: 0.90625rem;
       color: var(--muted);
-      line-height: 1.5;
-      letter-spacing: -0.005em;
+      line-height: 1.42857;
+      letter-spacing: var(--track-small);
     }
     .privacy-foot {
       font-size: 0.875rem;
       color: var(--muted);
       max-width: 56ch;
       margin: 40px auto 0;
-      letter-spacing: -0.005em;
+      letter-spacing: var(--track-small);
     }
     @media (max-width: 860px) {
       .privacy-grid { grid-template-columns: 1fr; }
@@ -770,14 +784,14 @@
       display: block;
       font-size: 1rem;
       font-weight: 600;
-      letter-spacing: -0.015em;
+      letter-spacing: var(--track-body);
       margin-bottom: 6px;
     }
     .eco-card span {
       font-size: 0.875rem;
       color: var(--muted);
-      line-height: 1.5;
-      letter-spacing: -0.005em;
+      line-height: 1.42857;
+      letter-spacing: var(--track-small);
     }
     @media (max-width: 860px) {
       .ecosystem-grid { grid-template-columns: repeat(2, 1fr); }
@@ -814,14 +828,14 @@
     .pro-name {
       font-size: 1.375rem;
       font-weight: 600;
-      letter-spacing: -0.02em;
+      letter-spacing: var(--track-lead);
     }
     .pro-name .dot { color: var(--accent-text); }
     .pro-name .pro { color: var(--accent-text); margin-left: 4px; }
     .pro-price {
       font-size: 2rem;
-      font-weight: 700;
-      letter-spacing: -0.025em;
+      font-weight: 600;
+      letter-spacing: var(--track-heading);
       font-variant-numeric: tabular-nums;
     }
     .pro-price small {
@@ -829,7 +843,7 @@
       font-weight: 400;
       color: var(--muted);
       margin-left: 4px;
-      letter-spacing: -0.005em;
+      letter-spacing: var(--track-caption);
     }
     .pro-features {
       list-style: none;
@@ -845,7 +859,7 @@
       align-items: flex-start;
       font-size: 0.96875rem;
       color: var(--fg-soft);
-      letter-spacing: -0.005em;
+      letter-spacing: var(--track-small);
     }
     .pro-features .check {
       width: 20px;
@@ -866,7 +880,7 @@
       font-size: 0.8125rem;
       color: var(--muted);
       text-align: center;
-      letter-spacing: -0.005em;
+      letter-spacing: var(--track-caption);
     }
     .pro-foot .sep { margin: 0 8px; opacity: 0.5; }
 
@@ -890,7 +904,7 @@
       padding: 48px 0;
       font-size: 0.875rem;
       color: var(--muted);
-      letter-spacing: -0.005em;
+      letter-spacing: var(--track-small);
     }
     .footer-grid {
       display: flex;
