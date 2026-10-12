@@ -38,6 +38,7 @@
       --fg-soft: #424245;
       --muted: #6e6e73;
       --accent: #34c759;
+      --accent-text: #00803a;   /* AA-contrast green for text on light surfaces */
       --accent-soft: rgba(52, 199, 89, 0.12);
       --border: rgba(0, 0, 0, 0.08);
       --nav-bg: rgba(251, 251, 253, 0.72);
@@ -63,6 +64,7 @@
         --fg-soft: #d1d1d6;
         --muted: #86868b;
         --accent: #30d158;
+        --accent-text: #30d158;
         --accent-soft: rgba(48, 209, 88, 0.14);
         --border: rgba(255, 255, 255, 0.1);
         --nav-bg: rgba(0, 0, 0, 0.72);
@@ -86,12 +88,12 @@
     }
 
     .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
-    a { color: var(--accent); text-decoration: none; }
+    a { color: var(--accent-text); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
     /* Keyboard focus: visible in both themes, never shown on mouse clicks */
     :focus-visible {
-      outline: 2px solid var(--accent);
+      outline: 2px solid var(--fg);
       outline-offset: 3px;
       border-radius: 6px;
     }
@@ -120,7 +122,7 @@
       letter-spacing: -0.02em;
       color: var(--fg);
     }
-    .brand .dot { color: var(--accent); }
+    .brand .dot { color: var(--accent-text); }
     .nav-back {
       color: var(--muted);
       font-size: 0.90625rem;
@@ -139,7 +141,7 @@
       font-weight: 600;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: var(--accent-text);
       margin: 0 0 16px;
     }
     h1 {
@@ -150,7 +152,7 @@
       margin: 0 0 20px;
     }
     h1 .accent {
-      color: var(--accent);
+      color: var(--accent-text);
     }
     .page-lede {
       font-size: 1.1875rem;
@@ -196,7 +198,7 @@
       color: var(--muted);
       letter-spacing: var(--track-small);
     }
-    .contact-body a { color: var(--accent); font-weight: 500; }
+    .contact-body a { color: var(--accent-text); font-weight: 500; }
 
     @media (max-width: 540px) {
       .contact-card { flex-direction: column; text-align: center; padding: 24px 20px; gap: 14px; }
@@ -235,7 +237,7 @@
     }
     details summary h3 { margin: 0; font-size: inherit; font-weight: inherit; }
     details summary::-webkit-details-marker { display: none; }
-    details summary:hover { color: var(--accent); }
+    details summary:hover { color: var(--accent-text); }
     details summary::after {
       content: '';
       width: 14px;
@@ -262,6 +264,7 @@
     }
     details .answer p { margin: 0 0 12px; }
     details .answer p:last-child { margin-bottom: 0; }
+    details .answer a, .contact-body a { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
 
     /* Footer */
     footer {
@@ -297,6 +300,7 @@
     </div>
   </nav>
 
+  <main id="main">
   <header class="page-header">
     <div class="wrap">
       <p class="eyebrow">Support</p>
@@ -328,14 +332,14 @@
         <summary><h3>Is Left. really free?</h3></summary>
         <div class="answer">
           <p>Yes. The core app is completely free, with no time limits and no nagging. That includes tracking income, bills, transactions, and seeing what you have left to spend.</p>
-          <p>Left Pro ($9.99 once) is for people who want the long-term picture: debt payoff strategies that show which balance to clear first and your payoff date, net worth tracked over time, and savings goals.</p>
+          <p>Left Pro ($9.99 once) is for people who want the long-term picture: net worth tracked over time, your assets in one place, and side-by-side debt payoff strategies that show which balance to clear first and when you'll be debt-free.</p>
         </div>
       </details>
 
       <details>
         <summary><h3>Do you have a subscription?</h3></summary>
         <div class="answer">
-          <p>No. Pro is a one-time purchase of $9.99. Once you have it, you have it forever, on every device signed in with your Apple&nbsp;ID.</p>
+          <p>No. Pro is a one-time purchase of $9.99. Once you have it, you have it forever, on every device signed in with your Apple&nbsp;Account.</p>
         </div>
       </details>
 
@@ -373,21 +377,29 @@
         <summary><h3>How do I restore my Pro purchase?</h3></summary>
         <div class="answer">
           <p>Open the app, tap any locked Pro feature, and tap <strong>Restore purchase</strong> at the bottom of the paywall.</p>
-          <p>Make sure you're signed in with the same Apple&nbsp;ID you used to buy Pro originally.</p>
+          <p>Make sure you're signed in with the same Apple&nbsp;Account you used to buy Pro originally.</p>
         </div>
       </details>
 
       <details>
         <summary><h3>What if I switch phones?</h3></summary>
         <div class="answer">
-          <p>Your data syncs through your iCloud account. Sign in to your new phone with the same Apple&nbsp;ID, install Left., and your bills, transactions, income, and accounts will all be there. Pro restores automatically.</p>
+          <p>Your data syncs through your iCloud account. Sign in to your new phone with the same Apple&nbsp;Account, install Left., and your bills, transactions, income, and accounts will all be there. Pro restores automatically.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary><h3>What do I need to run Left.?</h3></summary>
+        <div class="answer">
+          <p>An iPhone running iOS&nbsp;26 or later. The Apple&nbsp;Watch app needs watchOS&nbsp;26.</p>
+          <p>Left Assist's open-ended questions use Apple Intelligence, which needs an iPhone&nbsp;15&nbsp;Pro or later. Everything else, including the calculated answers, works on any iPhone that runs Left.</p>
         </div>
       </details>
 
       <details>
         <summary><h3>Does Left. work on Apple Watch?</h3></summary>
         <div class="answer">
-          <p>Yes. Check your budget, mark bills paid, and log expenses straight from your wrist. The Watch app syncs with your iPhone through iCloud, so changes show up everywhere.</p>
+          <p>Yes. See what's left and your daily pace at a glance, add an expense or income, and mark bills paid straight from your wrist. The Watch app syncs with your iPhone through iCloud, so changes show up everywhere.</p>
         </div>
       </details>
 
@@ -413,6 +425,8 @@
       </details>
     </div>
   </section>
+
+  </main>
 
   <footer>
     <div class="footer-grid">
