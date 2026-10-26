@@ -29,6 +29,9 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; }
 
+    /* Smooth cross-fades between the site's pages, where supported */
+    @view-transition { navigation: auto; }
+
     :root {
       color-scheme: light dark;
       --bg: #fbfbfd;
@@ -67,11 +70,11 @@
         --accent-text: #30d158;
         --accent-soft: rgba(48, 209, 88, 0.14);
         --border: rgba(255, 255, 255, 0.1);
-        --nav-bg: rgba(0, 0, 0, 0.72);
+        --nav-bg: rgba(28, 28, 30, 0.66);
       }
     }
 
-    html { scroll-behavior: smooth; scroll-padding-top: 64px; }
+    html { scroll-behavior: smooth; scroll-padding-top: 76px; }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
     body {
@@ -98,38 +101,71 @@
       border-radius: 6px;
     }
 
-    /* Nav */
+    /* Nav: the floating glass bar from the home page */
     nav {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: var(--nav-bg);
-      backdrop-filter: saturate(180%) blur(20px);
-      -webkit-backdrop-filter: saturate(180%) blur(20px);
-      border-bottom: 1px solid var(--border);
+      padding: 12px 16px 0;
+      pointer-events: none;
     }
     nav .inner {
-      max-width: 1120px;
+      pointer-events: auto;
+      max-width: 1040px;
+      height: 52px;
       margin: 0 auto;
-      padding: 14px 24px;
+      padding: 0 8px 0 22px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 16px;
+      border-radius: 999px;
+      background: var(--nav-bg);
+      border: 1px solid var(--border);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      backdrop-filter: blur(24px) saturate(180%);
     }
     .brand {
-      font-weight: 600;
+      font-weight: 700;
       font-size: 1.375rem;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.025em;
       color: var(--fg);
     }
-    .brand .dot { color: var(--accent-text); }
+    .brand:hover { text-decoration: none; }
+    .brand .dot { color: var(--accent); }
+    .nav-end { display: flex; align-items: center; gap: 4px; }
     .nav-back {
-      color: var(--muted);
-      font-size: 0.90625rem;
+      display: inline-flex;
+      align-items: center;
+      height: 36px;
+      padding: 0 14px;
+      border-radius: 999px;
+      color: var(--fg-soft);
+      font-size: 0.875rem;
       letter-spacing: var(--track-small);
-      transition: color .15s ease;
+      transition: color .15s ease, background-color .15s ease;
     }
-    .nav-back:hover { color: var(--fg); text-decoration: none; }
+    .nav-back:hover { color: var(--fg); background: rgba(127, 127, 127, 0.12); text-decoration: none; }
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      height: 36px;
+      padding: 0 16px;
+      border-radius: 999px;
+      background: #1d7a3a;
+      color: #fff;
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: var(--track-small);
+    }
+    .nav-cta:hover { filter: brightness(1.12); text-decoration: none; }
+    @media (max-width: 480px) {
+      nav { padding: 10px 12px 0; }
+      nav .inner { padding-left: 18px; }
+    }
+    @media (max-width: 400px) {
+      .nav-back { display: none; }
+    }
 
     /* Page header */
     .page-header {
@@ -293,10 +329,13 @@
 </head>
 <body>
 
-  <nav>
+  <nav aria-label="Primary">
     <div class="inner">
-      <a href="/" class="brand">Left<span class="dot">.</span></a>
-      <a href="/" class="nav-back">← Back to home</a>
+      <a href="/" class="brand" aria-label="Left. home">Left<span class="dot">.</span></a>
+      <div class="nav-end">
+        <a href="/" class="nav-back">← Back to home</a>
+        <a href="https://apps.apple.com/app/id6761345386" class="nav-cta">Get the App</a>
+      </div>
     </div>
   </nav>
 
@@ -331,8 +370,8 @@
       <details>
         <summary><h3>Is Left. really free?</h3></summary>
         <div class="answer">
-          <p>Yes. The core app is completely free, with no time limits and no nagging. That includes tracking income, bills, transactions, and seeing what you have left to spend.</p>
-          <p>Left Pro ($9.99 once) is for people who want the long-term picture: net worth tracked over time, your assets in one place, and side-by-side debt payoff strategies that show which balance to clear first and when you'll be debt-free.</p>
+          <p>Yes. The core app is completely free, with no time limits and no nagging. That includes income, bills, purchases, spending limits, trends, savings goals, receipt scanning, Left Assist, Apple Watch, widgets, and seeing what you have left to spend.</p>
+          <p>Left. Pro ($9.99 once) is for the long game: a debt payoff plan that shows what to pay first and when you’ll be debt-free, plus your assets and net worth tracked over time.</p>
         </div>
       </details>
 
@@ -346,14 +385,14 @@
       <details>
         <summary><h3>Does Left. connect to my bank?</h3></summary>
         <div class="answer">
-          <p>No, and that's intentional. Left. is a manual-entry app. You log your income, bills, and transactions yourself. That keeps things private, fast, and free of surprise account linkages. Most people find that the small daily ritual is what actually changes their relationship with money.</p>
+          <p>No, and that's intentional. Left. is a manual-entry app. You log your income, bills, and purchases yourself. That keeps things private, fast, and free of surprise account linkages. Most people find that the small daily ritual is what actually changes their relationship with money.</p>
         </div>
       </details>
 
       <details>
         <summary><h3>Where is my data stored?</h3></summary>
         <div class="answer">
-          <p>On your device, and optionally synced through your own iCloud account using Apple's CloudKit. We don't have servers. We never see your data.</p>
+          <p>On your device, and optionally synced through your own iCloud account using Apple's CloudKit. Left. has no servers of its own, so it never sees your data.</p>
           <p>If you turn off iCloud for Left. in your iPhone settings, all your data stays exclusively on your device.</p>
         </div>
       </details>
@@ -376,7 +415,7 @@
       <details>
         <summary><h3>How do I restore my Pro purchase?</h3></summary>
         <div class="answer">
-          <p>Open the app, tap any locked Pro feature, and tap <strong>Restore purchase</strong> at the bottom of the paywall.</p>
+          <p>Open the app, tap any locked Pro feature, and tap <strong>Restore Purchase</strong> on the paywall.</p>
           <p>Make sure you're signed in with the same Apple&nbsp;Account you used to buy Pro originally.</p>
         </div>
       </details>
@@ -384,7 +423,7 @@
       <details>
         <summary><h3>What if I switch phones?</h3></summary>
         <div class="answer">
-          <p>Your data syncs through your iCloud account. Sign in to your new phone with the same Apple&nbsp;Account, install Left., and your bills, transactions, income, and accounts will all be there. Pro restores automatically.</p>
+          <p>Your data syncs through your iCloud account. Sign in to your new phone with the same Apple&nbsp;Account, install Left., and your bills, purchases, income, and accounts will all be there. Pro restores automatically.</p>
         </div>
       </details>
 
@@ -399,7 +438,7 @@
       <details>
         <summary><h3>Does Left. work on Apple Watch?</h3></summary>
         <div class="answer">
-          <p>Yes. See what's left and your daily pace at a glance, add an expense or income, and mark bills paid straight from your wrist. The Watch app syncs with your iPhone through iCloud, so changes show up everywhere.</p>
+          <p>Yes. See what’s left and your daily amount at a glance, log a purchase in a tap, confirm paychecks, and check off bills as you pay them, right from your wrist. Changes show up on your iPhone too.</p>
         </div>
       </details>
 
