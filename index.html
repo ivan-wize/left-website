@@ -497,9 +497,9 @@
     }
     .hero-kicker:hover { background: color-mix(in srgb, var(--green) 24%, transparent); }
     .hero-kicker span { text-wrap: balance; }
-    .hero-kicker strong { font-weight: 600; color: var(--green-text); }
     .hero-kicker .spark { width: 16px; height: 16px; flex-shrink: 0; color: var(--green-text); }
     .hero-kicker .chev { width: 10px; height: 10px; flex-shrink: 0; color: var(--muted); }
+    @media (max-width: 340px) { .hero-kicker { gap: 6px; padding-inline: 10px; } }
     .hero .sub { margin-top: 18px; }
     .hero .body { max-width: 560px; margin-left: auto; margin-right: auto; }
     .cta-row {
@@ -831,21 +831,6 @@
 
     /* ===== LEFT ASSIST ===== */
     .assist { padding: clamp(16px, 3vw, 40px) 0 clamp(88px, 11vw, 160px); }
-    .new-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      height: 30px;
-      padding: 0 12px;
-      margin-bottom: 16px;
-      border-radius: 999px;
-      background: var(--green-soft);
-      color: var(--green-text);
-      font-size: 0.875rem;
-      font-weight: 600;
-      letter-spacing: var(--track-small);
-    }
-    .new-pill svg { width: 15px; height: 15px; }
     .assist .body { max-width: 640px; text-wrap: balance; }
     .assist-grid {
       display: grid;
@@ -1580,7 +1565,7 @@
       <div class="hero-text">
         <a class="hero-kicker" href="#assist">
           <svg class="spark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M10 2.5c.4 3.7 1.8 5.6 6 6.3-4.2.7-5.6 2.6-6 6.3-.4-3.7-1.8-5.6-6-6.3 4.2-.7 5.6-2.6 6-6.3Zm7.5 10c.2 2 1 3 3.3 3.4-2.3.4-3.1 1.4-3.3 3.4-.2-2-1-3-3.3-3.4 2.3-.4 3.1-1.4 3.3-3.4Z"/></svg>
-          <span><strong>New in 3.1:</strong> Left Assist logs, plans and checks in</span>
+          <span>Left Assist logs, plans and checks in</span>
           <svg class="chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 2l4 4-4 4"/></svg>
         </a>
         <h1>Private budgeting.<br>No subscription.</h1>
@@ -1739,7 +1724,6 @@
   <section class="assist" id="assist">
     <div class="wrap">
       <div class="section-head center reveal">
-        <p class="new-pill"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M10 2.5c.4 3.7 1.8 5.6 6 6.3-4.2.7-5.6 2.6-6 6.3-.4-3.7-1.8-5.6-6-6.3 4.2-.7 5.6-2.6 6-6.3Zm7.5 10c.2 2 1 3 3.3 3.4-2.3.4-3.1 1.4-3.3 3.4-.2-2-1-3-3.3-3.4 2.3-.4 3.1-1.4 3.3-3.4Z"/></svg>New in 3.1</p>
         <h2>Ask anything about your money.</h2>
         <p class="sub">Now Left Assist logs, plans and checks in, not just answers.</p>
         <p class="body">Still private. Left Assist runs on your iPhone, and your conversations aren’t saved.</p>
