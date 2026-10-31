@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Left. Private budget app for iPhone. No subscription.</title>
-  <meta name="description" content="The budget app that shows what’s left after bills, spending and savings. No bank login, no tracking, no subscription. Free for iPhone and Apple Watch. Left. Pro is $9.99 once.">
+  <meta name="description" content="See what’s left after bills, spending and savings, with a private assistant that logs and plans on your iPhone. No bank login, no subscription. Free for iPhone and Apple Watch.">
 
   <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
@@ -42,8 +42,8 @@
     "alternateName": "Left. Budget Planner",
     "url": "https://left-budget.com/",
     "applicationCategory": "FinanceApplication",
-    "operatingSystem": "iOS 26.0 or later; watchOS 26.0 or later",
-    "description": "The budget app that shows what’s left after bills, spending and savings. No bank login, no tracking, no subscription. Free for iPhone and Apple Watch. Left. Pro is $9.99 once.",
+    "operatingSystem": "iOS 26.1 or later; watchOS 26.0 or later",
+    "description": "See what’s left after bills, spending and savings, with a private assistant that logs and plans on your iPhone. No bank login, no subscription. Free for iPhone and Apple Watch.",
     "image": "https://left-budget.com/og-image.jpg",
     "installUrl": "https://apps.apple.com/app/id6761345386",
     "offers": [
@@ -59,12 +59,13 @@
     "mainEntity": [
       { "@type": "Question", "name": "Is Left. really free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Income, bills, purchases, spending limits, trends, savings goals, receipt scanning, Left Assist, Apple Watch, widgets, Siri, and iCloud sync are all free. Left. Pro is a $9.99 one-time purchase that adds the debt payoff plan and net worth." } },
       { "@type": "Question", "name": "Is there a subscription?", "acceptedAnswer": { "@type": "Answer", "text": "No. Left. is free, and Left. Pro is a one-time $9.99 purchase with future updates included." } },
-      { "@type": "Question", "name": "Why doesn’t it connect to my bank?", "acceptedAnswer": { "@type": "Answer", "text": "By design. You enter your own numbers, so there are no credentials to hand over and no third party in the middle. Logging a purchase yourself makes you notice it, and the capture bar, receipt scanning, Siri, and Apple Watch keep it to seconds." } },
+      { "@type": "Question", "name": "Why doesn’t it connect to my bank?", "acceptedAnswer": { "@type": "Answer", "text": "By design. You enter your own numbers, so there are no credentials to hand over and no third party in the middle. Logging a purchase yourself makes you notice it, and the capture bar, Left Assist, receipt scanning, Siri, and Apple Watch keep it to seconds." } },
       { "@type": "Question", "name": "Where is my data?", "acceptedAnswer": { "@type": "Answer", "text": "On your iPhone and Apple Watch, and in your own iCloud for sync between them. Left. has no servers of its own, no analytics, and no ads, and the App Store privacy label reads Data Not Collected." } },
       { "@type": "Question", "name": "Does it work in Airplane Mode?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Everything you need lives on your iPhone, so Left. keeps working with no connection at all. Turn on Airplane Mode and see for yourself. Changes sync through iCloud when you’re back online." } },
-      { "@type": "Question", "name": "Does Left Assist send my questions anywhere?", "acceptedAnswer": { "@type": "Answer", "text": "No. Calculated answers come from the app itself on any iPhone that runs Left. Open-ended questions use Apple Intelligence on iPhone 15 Pro and later. Either way, nothing is sent to a server." } },
+      { "@type": "Question", "name": "Does Left Assist send my questions anywhere?", "acceptedAnswer": { "@type": "Answer", "text": "No. Calculated answers come from the app itself on any iPhone that runs Left. Open-ended questions use Apple Intelligence on iPhone 15 Pro and later. Either way, nothing is sent to a server, and your conversations aren’t saved." } },
+      { "@type": "Question", "name": "Can Left Assist change my budget?", "acceptedAnswer": { "@type": "Answer", "text": "Only when you tap. Type “coffee 4.50”, “paid rent”, or “got paid”, and Left Assist shows you what it’s ready to do. Nothing changes until you tap, and you can undo a purchase right after." } },
       { "@type": "Question", "name": "Does it work with my currency?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Pick from more than 150 currencies in Settings, or stay on Automatic to follow your Region. Amounts are never converted. Only the symbol changes, so 1,250 stays 1,250." } },
-      { "@type": "Question", "name": "What do I need to run it?", "acceptedAnswer": { "@type": "Answer", "text": "An iPhone on iOS 26 or later, and watchOS 26 or later for the Apple Watch app. Open-ended Left Assist questions use Apple Intelligence, which needs an iPhone 15 Pro or later." } },
+      { "@type": "Question", "name": "What do I need to run it?", "acceptedAnswer": { "@type": "Answer", "text": "An iPhone on iOS 26.1 or later, and watchOS 26 or later for the Apple Watch app. Open-ended Left Assist questions use Apple Intelligence, which needs an iPhone 15 Pro or later." } },
       { "@type": "Question", "name": "What happens when I get a new iPhone?", "acceptedAnswer": { "@type": "Answer", "text": "Sign in with the same Apple Account, install Left., and your data syncs back through iCloud. Pro restores automatically, and Restore Purchase is there if you ever need it." } }
     ]
   }
@@ -95,9 +96,9 @@
       /* The app's palette. One segmented ring everywhere: spent, bills to pay,
          saved, left, clockwise from 12. Text variants keep 4.5:1 on light surfaces. */
       --green: #34c759;
-      --green-text: #1a7a3a;
+      --green-text: #197835;
       --green-soft: rgba(52, 199, 89, 0.14);
-      --brand-fill: #1d7a3a;     /* white text sits only on this deep green */
+      --brand-fill: #197835;     /* white text sits only on this deep green */
       --blue: #2e7bf5;
       --blue-soft: #a8ccf4;
       --purple: #af52de;
@@ -481,18 +482,24 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      height: 32px;
-      padding: 0 14px;
+      min-height: 34px;
+      max-width: 100%;
+      padding: 5px 12px 5px 14px;
       margin-bottom: 22px;
       border-radius: 999px;
-      background: var(--pill);
-      color: var(--fg-soft);
+      background: var(--green-soft);
+      color: var(--fg);
       font-size: 0.875rem;
-      font-weight: 500;
       letter-spacing: var(--track-small);
+      line-height: 1.3;
+      text-align: left;
+      transition: background-color .2s ease;
     }
-    .hero-kicker .dots { display: inline-flex; gap: 3px; }
-    .hero-kicker .dots i { width: 7px; height: 7px; border-radius: 50%; }
+    .hero-kicker:hover { background: color-mix(in srgb, var(--green) 24%, transparent); }
+    .hero-kicker span { text-wrap: balance; }
+    .hero-kicker strong { font-weight: 600; color: var(--green-text); }
+    .hero-kicker .spark { width: 16px; height: 16px; flex-shrink: 0; color: var(--green-text); }
+    .hero-kicker .chev { width: 10px; height: 10px; flex-shrink: 0; color: var(--muted); }
     .hero .sub { margin-top: 18px; }
     .hero .body { max-width: 560px; margin-left: auto; margin-right: auto; }
     .cta-row {
@@ -802,10 +809,9 @@
       }
       .js .tour-step:nth-child(1) .tour-text { grid-row: 1; }
       .js .tour-step:nth-child(2) .tour-text { grid-row: 2; }
-      .js .tour-step:nth-child(3) .tour-text { grid-row: 3; }
       .js .tour-phone {
         grid-column: 2;
-        grid-row: 1 / span 3;
+        grid-row: 1 / span 2;
         align-self: start;
         position: sticky;
         top: calc(50svh - min(38svh, 370px) + 28px);
@@ -821,6 +827,114 @@
       @media (prefers-reduced-motion: reduce) {
         .js .tour-phone { transform: none; transition: none; }
       }
+    }
+
+    /* ===== LEFT ASSIST ===== */
+    .assist { padding: clamp(16px, 3vw, 40px) 0 clamp(88px, 11vw, 160px); }
+    .new-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      height: 30px;
+      padding: 0 12px;
+      margin-bottom: 16px;
+      border-radius: 999px;
+      background: var(--green-soft);
+      color: var(--green-text);
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: var(--track-small);
+    }
+    .new-pill svg { width: 15px; height: 15px; }
+    .assist .body { max-width: 640px; text-wrap: balance; }
+    .assist-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      align-items: center;
+      gap: clamp(40px, 6vw, 88px);
+      margin-top: clamp(48px, 6vw, 72px);
+    }
+    .assist-visual { position: relative; }
+    .assist-visual .aurora { inset: 4% 0; }
+    .assist-phones {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+    }
+    .assist-phones figure { width: 270px; flex: none; }
+    .assist-phones figure:last-child { margin-top: 56px; }
+    .assist-phones img { width: 100%; filter: var(--phone-shadow); }
+    .assist-item { padding: 24px 0; border-top: 1px solid var(--border); }
+    .assist-item:first-child { border-top: 0; padding-top: 0; }
+    .assist-item:last-child { padding-bottom: 0; }
+    .assist-item h3 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.3125rem;
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: var(--track-lead);
+    }
+    .assist-item h3 svg { width: 24px; height: 24px; flex-shrink: 0; color: var(--green); }
+    .assist-item > p {
+      margin-top: 8px;
+      font-size: 1rem;
+      line-height: 1.45;
+      color: var(--muted);
+      letter-spacing: var(--track-body);
+      text-wrap: pretty;
+    }
+    .says { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .says li {
+      padding: 7px 13px;
+      border-radius: 16px 16px 5px 16px;
+      background: var(--brand-fill);
+      color: #fff;
+      font-size: 0.9375rem;
+      line-height: 1.3;
+      letter-spacing: var(--track-small);
+    }
+    .assist-item .notice {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: fit-content;
+      max-width: 100%;
+      margin-top: 14px;
+      padding: 10px 16px 10px 10px;
+      border-radius: 18px;
+      background: var(--card);
+      box-shadow: var(--shadow-card), 0 0 0 1px var(--border);
+      color: var(--fg);
+      font-size: 0.9375rem;
+      letter-spacing: var(--track-small);
+    }
+    .notice img { width: 34px; height: 34px; border-radius: 8px; flex-shrink: 0; background: #fff; box-shadow: 0 0 0 1px var(--border); }
+    .assist > .wrap > .footnote { max-width: 620px; margin: clamp(40px, 5vw, 64px) auto 0; }
+    @media (max-width: 1000px) {
+      .assist-grid { grid-template-columns: minmax(0, 1fr); }
+      .assist-list { max-width: 620px; margin: 0 auto; width: 100%; }
+    }
+    /* Too narrow for two phones side by side: they become a swipeable row */
+    @media (max-width: 640px) {
+      .assist-visual .aurora { display: none; }
+      .assist-phones {
+        justify-content: flex-start;
+        margin: 0 -24px;
+        padding: 4px 24px 32px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-padding: 0 24px;
+        scrollbar-width: none;
+      }
+      .assist-phones::-webkit-scrollbar { display: none; }
+      .assist-phones figure { width: min(270px, 72vw); scroll-snap-align: center; }
+      .assist-phones figure:last-child { margin-top: 0; }
+    }
+    @media (max-width: 480px) {
+      .assist-phones { margin: 0 -16px; padding: 4px 16px 32px; scroll-padding: 0 16px; }
     }
 
     /* ===== MORE (bento) ===== */
@@ -1433,6 +1547,7 @@
       <div class="nav-links">
         <a href="#how">How it works</a>
         <a href="#tour">Features</a>
+        <a href="#assist">Left Assist</a>
         <a href="#watch">Apple Watch</a>
         <a href="#privacy">Privacy</a>
         <a href="#pro">Pro</a>
@@ -1448,6 +1563,7 @@
     <div class="menu" id="menu" popover>
       <a href="#how">How it works</a>
       <a href="#tour">Features</a>
+      <a href="#assist">Left Assist</a>
       <a href="#watch">Apple Watch</a>
       <a href="#privacy">Privacy</a>
       <a href="#pro">Pro</a>
@@ -1462,10 +1578,11 @@
   <header class="hero">
     <div class="wrap">
       <div class="hero-text">
-        <p class="hero-kicker">
-          <span class="dots" aria-hidden="true"><i style="background: var(--blue)"></i><i style="background: var(--purple)"></i><i style="background: var(--green)"></i></span>
-          For iPhone and Apple Watch
-        </p>
+        <a class="hero-kicker" href="#assist">
+          <svg class="spark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M10 2.5c.4 3.7 1.8 5.6 6 6.3-4.2.7-5.6 2.6-6 6.3-.4-3.7-1.8-5.6-6-6.3 4.2-.7 5.6-2.6 6-6.3Zm7.5 10c.2 2 1 3 3.3 3.4-2.3.4-3.1 1.4-3.3 3.4-.2-2-1-3-3.3-3.4 2.3-.4 3.1-1.4 3.3-3.4Z"/></svg>
+          <span><strong>New in 3.1:</strong> Left Assist logs, plans and checks in</span>
+          <svg class="chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 2l4 4-4 4"/></svg>
+        </a>
         <h1>Private budgeting.<br>No subscription.</h1>
         <p class="sub">No bank login. No tracking.</p>
         <p class="body">Left. shows what’s left after bills, spending and savings, so you always know what today can handle.</p>
@@ -1483,7 +1600,7 @@
             <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 2l4 4-4 4"/></svg>
           </a>
         </div>
-        <p class="footnote">Free on the App Store. Left. Pro is $9.99, once.</p>
+        <p class="footnote">Free on the App Store for iPhone and Apple Watch. Left. Pro is $9.99, once.</p>
       </div>
     </div>
     <div class="hero-stage">
@@ -1494,8 +1611,8 @@
              width="896" height="1878" alt="" loading="lazy" decoding="async">
       </picture>
       <picture class="hp hp-side hp-right">
-        <source type="image/avif" srcset="screenshots/assist-448.avif 448w, screenshots/assist.avif 898w" sizes="(max-width: 1024px) 270px, 316px">
-        <img src="screenshots/assist.webp" srcset="screenshots/assist-448.webp 448w, screenshots/assist.webp 898w" sizes="(max-width: 1024px) 270px, 316px"
+        <source type="image/avif" srcset="screenshots/assist-add-448.avif 448w, screenshots/assist-add.avif 898w" sizes="(max-width: 1024px) 270px, 316px">
+        <img src="screenshots/assist-add.webp" srcset="screenshots/assist-add-448.webp 448w, screenshots/assist-add.webp 898w" sizes="(max-width: 1024px) 270px, 316px"
              width="898" height="1876" alt="" loading="lazy" decoding="async">
       </picture>
       <picture class="hp hp-center">
@@ -1571,7 +1688,7 @@
     </div>
   </section>
 
-  <!-- TOUR: SPENDING, INCOME, LEFT ASSIST -->
+  <!-- TOUR: SPENDING, INCOME -->
   <section class="tour" id="tour" aria-label="Features">
     <div class="wrap">
       <div class="tour-grid">
@@ -1581,7 +1698,7 @@
             <p class="eyebrow">Spending</p>
             <h2>Log spending in seconds.</h2>
             <p class="sub">Purchases and bills in one place.</p>
-            <p class="body">Logging a purchase yourself makes you notice it. Left. makes it take seconds: type what you spent into the bar at the bottom, or scan the receipt. Everyday purchases are grouped by day, with bills one tap away, paid and still to pay.</p>
+            <p class="body">Logging a purchase yourself makes you notice it. Left. makes it take seconds: type what you spent into the bar at the bottom, scan the receipt, or tell Left Assist. Everyday purchases are grouped by day, with bills one tap away, paid and still to pay.</p>
             <p class="footnote">This October: $3,011 spent so far, $746 of it everyday purchases and $2,265 bills paid, with $625 in bills still to pay.</p>
           </div>
           <figure class="tour-phone">
@@ -1614,26 +1731,76 @@
           </figure>
         </div>
 
-        <div class="tour-step" id="assist">
-          <div class="tour-text center-sm">
-            <p class="eyebrow">Left Assist</p>
-            <h2>Ask anything about your money.</h2>
-            <p class="sub">Private answers that never leave your iPhone.</p>
-            <p class="body">Ask in plain words, like “Am I on track this month?” or “How much is due this week?” Answers are calculated from your own numbers, right on your iPhone, and Left Assist is free for everyone.</p>
-            <p class="footnote">Open-ended questions use Apple Intelligence, on iPhone&nbsp;15&nbsp;Pro and later. Calculated answers, like what’s due or what’s left, work on any iPhone that runs Left.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEFT ASSIST -->
+  <section class="assist" id="assist">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <p class="new-pill"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M10 2.5c.4 3.7 1.8 5.6 6 6.3-4.2.7-5.6 2.6-6 6.3-.4-3.7-1.8-5.6-6-6.3 4.2-.7 5.6-2.6 6-6.3Zm7.5 10c.2 2 1 3 3.3 3.4-2.3.4-3.1 1.4-3.3 3.4-.2-2-1-3-3.3-3.4 2.3-.4 3.1-1.4 3.3-3.4Z"/></svg>New in 3.1</p>
+        <h2>Ask anything about your money.</h2>
+        <p class="sub">Now Left Assist logs, plans and checks in, not just answers.</p>
+        <p class="body">Still private. Left Assist runs on your iPhone, and your conversations aren’t saved.</p>
+      </div>
+
+      <div class="assist-grid">
+        <div class="assist-visual reveal">
+          <div class="aurora" aria-hidden="true"></div>
+          <div class="assist-phones" role="group" aria-label="Left Assist screenshots" tabindex="0">
+            <figure>
+              <picture>
+                <source type="image/avif" srcset="screenshots/assist-log-448.avif 448w, screenshots/assist-log.avif 898w" sizes="(max-width: 640px) min(270px, 72vw), 270px">
+                <img src="screenshots/assist-log.webp" srcset="screenshots/assist-log-448.webp 448w, screenshots/assist-log.webp 898w" sizes="(max-width: 640px) min(270px, 72vw), 270px"
+                     width="898" height="1876"
+                     alt="Left Assist logging by typing. The message lunch 18 and gas 52 becomes two purchases, Lunch $18.00 and Gas $52.00, both dated today and marked Added, with a 2 purchases added message and an Undo button."
+                     loading="lazy" decoding="async">
+              </picture>
+            </figure>
+            <figure>
+              <picture>
+                <source type="image/avif" srcset="screenshots/assist-add-448.avif 448w, screenshots/assist-add.avif 898w" sizes="(max-width: 640px) min(270px, 72vw), 270px">
+                <img src="screenshots/assist-add.webp" srcset="screenshots/assist-add-448.webp 448w, screenshots/assist-add.webp 898w" sizes="(max-width: 640px) min(270px, 72vw), 270px"
+                     width="898" height="1876"
+                     alt="A Left Assist conversation. Add dinner. How much was it? 47.50. Dinner, $47.50, is marked Added. How much I spent this month on groceries? You’ve spent $516 on groceries this month, across four purchases, marked Calculated from your data."
+                     loading="lazy" decoding="async">
+              </picture>
+            </figure>
           </div>
-          <figure class="tour-phone">
-            <picture>
-              <source type="image/avif" srcset="screenshots/assist-448.avif 448w, screenshots/assist.avif 898w" sizes="(max-width: 999px) min(300px, 76vw), 360px">
-              <img src="screenshots/assist.webp" srcset="screenshots/assist-448.webp 448w, screenshots/assist.webp 898w" sizes="(max-width: 999px) min(300px, 76vw), 360px"
-                   width="898" height="1876"
-                   alt="A Left Assist conversation. Am I on track this month? You’re on track: with 9 days left this month, you have $947 to spend at about $105 a day. How much is due this week? $625 across four bills: Electric &amp; gas $96 due tomorrow, Credit card $75 in 3 days, Car loan $389 and Internet $65 in 5 days. How much debt do I have? $29,900 across three accounts: a credit card at 23.90% APR, a car loan at 6.90%, and a student loan at 5.50%. Each answer is marked Calculated from your data."
-                   loading="lazy" decoding="async">
-            </picture>
-          </figure>
         </div>
 
+        <ul class="assist-list">
+          <li class="assist-item reveal">
+            <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v9M7.5 12h9"/></svg>Log by typing</h3>
+            <p>Type it the way you’d say it. Nothing changes until you tap.</p>
+            <ul class="says" aria-label="Things you can type">
+              <li>coffee 4.50</li><li>paid rent</li><li>got paid</li>
+            </ul>
+          </li>
+          <li class="assist-item reveal d1">
+            <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 18l5-6 4 3.5L20 7"/><path d="M15 7h5v5"/></svg>Plan with it</h3>
+            <p>Left Assist checks your plan against your own past months, not an outside rule.</p>
+            <ul class="says" aria-label="Things you can ask for">
+              <li>Help me save $3,000 by May</li><li>Help me spend less on food</li>
+            </ul>
+          </li>
+          <li class="assist-item reveal d2">
+            <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>Month in review</h3>
+            <p>On the 1st, see how last month went and one thing to try next. The optional reminder has no figures in it.</p>
+            <p class="notice"><img src="apple-touch-icon.png" width="34" height="34" alt="" loading="lazy" decoding="async"><span>Your look back at October is ready.</span></p>
+          </li>
+          <li class="assist-item reveal d3">
+            <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 18.5V7a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3H8z"/></svg>Ask in plain words</h3>
+            <p>Answers are calculated from your own numbers, right on your iPhone.</p>
+            <ul class="says" aria-label="Things you can ask">
+              <li>Where am I overspending?</li><li>What bills are coming up?</li><li>How much could I safely save?</li>
+            </ul>
+          </li>
+        </ul>
       </div>
+
+      <p class="footnote center reveal">Left Assist is free for everyone. Some questions use Apple Intelligence, on iPhone&nbsp;15&nbsp;Pro and later. Calculated answers, like what’s due or what’s left, work on any iPhone that runs Left.</p>
     </div>
   </section>
 
@@ -1715,6 +1882,7 @@
           <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v9M7.5 12h9"/></svg>Log a purchase from anywhere</h3>
           <p>Add one without opening the app, from wherever your hand already is.</p>
           <ul class="mini chips" aria-label="Places to log a purchase">
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M2.5 13V4.5a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2V9a2 2 0 0 1-2 2H5.2z"/></svg>Left Assist</li>
             <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="1.5" width="8" height="13" rx="2"/></svg>Lock Screen</li>
             <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="1.5" width="8" height="13" rx="2"/><path d="M2.5 4.5v2.5" stroke-linecap="round"/></svg>Action button</li>
             <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="5" height="5" rx="1.5"/><rect x="9" y="2" width="5" height="5" rx="2.5"/><rect x="2" y="9" width="5" height="5" rx="2.5"/><rect x="9" y="9" width="5" height="5" rx="1.5"/></svg>Control Center</li>
@@ -1904,7 +2072,7 @@
             <li><span class="check"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>Spending limits and trends</li>
             <li><span class="check"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>Savings goals</li>
             <li><span class="check"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>Receipt scanning</li>
-            <li><span class="check"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>Left Assist</li>
+            <li><span class="check"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>Left Assist: ask, log, and plan</li>
             <li><span class="check"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>Apple Watch, widgets, and Siri</li>
             <li><span class="check"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>iCloud sync</li>
           </ul>
@@ -1954,7 +2122,7 @@
         </details>
         <details name="faq">
           <summary><h3>Why doesn’t it connect to my bank?</h3><svg class="faq-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M10 3v14M3 10h14"/></svg></summary>
-          <p class="answer">By design. You enter your own numbers, so there are no credentials to hand over and no third party in the middle. Logging a purchase yourself makes you notice it, and the capture bar, receipt scanning, Siri, and Apple Watch keep it to seconds.</p>
+          <p class="answer">By design. You enter your own numbers, so there are no credentials to hand over and no third party in the middle. Logging a purchase yourself makes you notice it, and the capture bar, Left Assist, receipt scanning, Siri, and Apple Watch keep it to seconds.</p>
         </details>
         <details name="faq">
           <summary><h3>Where is my data?</h3><svg class="faq-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M10 3v14M3 10h14"/></svg></summary>
@@ -1966,7 +2134,11 @@
         </details>
         <details name="faq">
           <summary><h3>Does Left Assist send my questions anywhere?</h3><svg class="faq-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M10 3v14M3 10h14"/></svg></summary>
-          <p class="answer">No. Calculated answers come from the app itself on any iPhone that runs Left. Open-ended questions use Apple Intelligence on iPhone&nbsp;15&nbsp;Pro and later. Either way, nothing is sent to a server.</p>
+          <p class="answer">No. Calculated answers come from the app itself on any iPhone that runs Left. Open-ended questions use Apple Intelligence on iPhone&nbsp;15&nbsp;Pro and later. Either way, nothing is sent to a server, and your conversations aren’t saved.</p>
+        </details>
+        <details name="faq">
+          <summary><h3>Can Left Assist change my budget?</h3><svg class="faq-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M10 3v14M3 10h14"/></svg></summary>
+          <p class="answer">Only when you tap. Type “coffee 4.50”, “paid rent”, or “got paid”, and Left Assist shows you what it’s ready to do. Nothing changes until you tap, and you can undo a purchase right after.</p>
         </details>
         <details name="faq">
           <summary><h3>Does it work with my currency?</h3><svg class="faq-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M10 3v14M3 10h14"/></svg></summary>
@@ -1974,7 +2146,7 @@
         </details>
         <details name="faq">
           <summary><h3>What do I need to run it?</h3><svg class="faq-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M10 3v14M3 10h14"/></svg></summary>
-          <p class="answer">An iPhone on iOS&nbsp;26 or later, and watchOS&nbsp;26 or later for the Apple Watch app. Open-ended Left Assist questions use Apple Intelligence, which needs an iPhone&nbsp;15&nbsp;Pro or later.</p>
+          <p class="answer">An iPhone on iOS&nbsp;26.1 or later, and watchOS&nbsp;26 or later for the Apple Watch app. Open-ended Left Assist questions use Apple Intelligence, which needs an iPhone&nbsp;15&nbsp;Pro or later.</p>
         </details>
         <details name="faq">
           <summary><h3>What happens when I get a new iPhone?</h3><svg class="faq-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M10 3v14M3 10h14"/></svg></summary>
@@ -2011,7 +2183,7 @@
             <strong>App Store</strong>
           </span>
         </a>
-        <p class="footnote">Free on the App Store for iPhone with iOS&nbsp;26 or later, and Apple Watch with watchOS&nbsp;26 or later. Left. Pro is a $9.99 one-time in-app purchase.</p>
+        <p class="footnote">Free on the App Store for iPhone with iOS&nbsp;26.1 or later, and Apple Watch with watchOS&nbsp;26 or later. Left. Pro is a $9.99 one-time in-app purchase.</p>
       </div>
     </div>
   </section>
