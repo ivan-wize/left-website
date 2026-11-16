@@ -57,7 +57,7 @@
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      { "@type": "Question", "name": "Is Left. really free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Income, bills, purchases, categories and limits, savings goals, receipt scanning, Left Assist, Apple Watch, widgets, Siri, and iCloud sync are all free. Left. Pro is a $9.99 one-time purchase that adds the debt payoff plan and net worth." } },
+      { "@type": "Question", "name": "Is Left. really free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Income, bills, purchases, categories and limits, savings goals, receipt scanning, Left Assist, Apple Watch, widgets, Siri, and iCloud sync are all free, and so is adding your debts and accounts. Left. Pro is a $9.99 one-time purchase that adds the payoff plan, with your debt-free date, and the net worth history chart." } },
       { "@type": "Question", "name": "Is there a subscription?", "acceptedAnswer": { "@type": "Answer", "text": "No. Left. is free, and Left. Pro is a one-time $9.99 purchase with future updates included." } },
       { "@type": "Question", "name": "Why doesn’t it connect to my bank?", "acceptedAnswer": { "@type": "Answer", "text": "By design. You enter your own numbers, so there are no credentials to hand over and no third party in the middle. Logging a purchase yourself makes you notice it, and the capture bar, Left Assist, receipt scanning, Siri, and Apple Watch keep it to seconds." } },
       { "@type": "Question", "name": "Do I have to add my bills every month?", "acceptedAnswer": { "@type": "Answer", "text": "No. Bills carry over to the new month the first time you open it. A bill you’ve just added is offered on the Copy card first, then carries over from the month after." } },
@@ -66,10 +66,10 @@
       { "@type": "Question", "name": "Does Left Assist send my questions anywhere?", "acceptedAnswer": { "@type": "Answer", "text": "No. Calculated answers come from the app itself on any iPhone that runs Left. Open-ended questions use Apple Intelligence on iPhone 15 Pro and later. Either way, nothing is sent to a server, and your conversations aren’t saved." } },
       { "@type": "Question", "name": "Can I talk to Left Assist?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Tap the microphone in Left Assist and speak. Your speech becomes text on your iPhone with Apple’s Speech framework, and the audio isn’t saved or sent anywhere. Voice is in English for now, and the first use may download Apple’s English speech model." } },
       { "@type": "Question", "name": "Can Left Assist change my budget?", "acceptedAnswer": { "@type": "Answer", "text": "Only when you tap. Left Assist can add, change, or delete purchases and bills, and it always shows you what it’s ready to do first. Nothing is added until you tap, nothing changes until you tap Update or Delete, and deletes can be undone." } },
-      { "@type": "Question", "name": "Does Left Assist give financial advice?", "acceptedAnswer": { "@type": "Answer", "text": "It gives budget advice from your own numbers. Ask “What should I do this month?” and it suggests up to three things, with every figure calculated by the app. It doesn’t help with investing, taxes, or legal questions, and nothing changes until you tap." } },
+      { "@type": "Question", "name": "Does Left Assist give financial advice?", "acceptedAnswer": { "@type": "Answer", "text": "It gives budget advice from your own numbers. Ask “What should I do this month?” or “What should I do next month?” and it suggests up to three things, with every figure calculated by the app. It doesn’t help with investing, taxes, or legal questions, and nothing changes until you tap." } },
       { "@type": "Question", "name": "Does it work with my currency?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Pick from more than 150 currencies in Settings, or stay on Automatic to follow your Region. Amounts are never converted. Only the symbol changes, so 1,250 stays 1,250." } },
       { "@type": "Question", "name": "What do I need to run it?", "acceptedAnswer": { "@type": "Answer", "text": "An iPhone on iOS 26.1 or later, iPhone Duo included, and watchOS 26 or later for the Apple Watch app. Open-ended Left Assist questions use Apple Intelligence, which needs an iPhone 15 Pro or later." } },
-      { "@type": "Question", "name": "What happens when I get a new iPhone?", "acceptedAnswer": { "@type": "Answer", "text": "Sign in with the same Apple Account, install Left., and your data syncs back through iCloud. Pro restores automatically, and Restore Purchase is there if you ever need it." } }
+      { "@type": "Question", "name": "What happens when I get a new iPhone?", "acceptedAnswer": { "@type": "Answer", "text": "Sign in with the same Apple Account, install Left., and your data syncs back through iCloud. Pro restores automatically, and Restore Purchases is there if you ever need it." } }
     ]
   }
   </script>
@@ -1509,6 +1509,110 @@
     }
 
     /* ===== PRO ===== */
+    /* What a little extra does: the app's own teaser card, with the sample debts */
+    .path {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+      align-items: center;
+      gap: clamp(24px, 4vw, 56px);
+      margin-top: clamp(48px, 6vw, 72px);
+      padding: clamp(24px, 4vw, 44px);
+      background: var(--card);
+      border-radius: 32px;
+      border: 1px solid transparent;
+      box-shadow: var(--shadow-card);
+      text-align: left;
+    }
+    @media (prefers-color-scheme: dark) {
+      .path { border-color: var(--border); }
+    }
+    .path-copy h3 {
+      font-size: clamp(1.625rem, 3vw, 2.25rem);
+      font-weight: 700;
+      line-height: 1.12;
+      letter-spacing: -0.01em;
+      text-wrap: balance;
+    }
+    .path-copy p {
+      margin-top: 14px;
+      font-size: 1.0625rem;
+      line-height: 1.5;
+      color: var(--fg-soft);
+      letter-spacing: var(--track-body);
+      text-wrap: pretty;
+    }
+    .path-card { position: relative; padding: 22px; border-radius: 24px; background: var(--bg-alt); }
+    .path-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .path-title {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--green-text);
+      letter-spacing: var(--track-small);
+    }
+    .path-title svg { width: 18px; height: 18px; color: var(--green); }
+    .path-badge {
+      padding: 3px 10px;
+      border-radius: 8px;
+      background: var(--green-soft);
+      color: var(--green-text);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: var(--track-caption);
+      white-space: nowrap;
+    }
+    .path-line { margin-top: 16px; font-size: 1.1875rem; font-weight: 600; line-height: 1.25; letter-spacing: var(--track-body); text-wrap: balance; }
+    .path-from { margin-top: 3px; font-size: 0.9375rem; color: var(--muted); letter-spacing: var(--track-small); }
+    .path-extra { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+    .path-label { margin-right: 4px; font-size: 0.875rem; color: var(--muted); letter-spacing: var(--track-small); }
+    .path-chip { position: relative; cursor: pointer; }
+    .path-chip input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
+    .path-chip span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 64px;
+      height: 40px;
+      padding: 0 16px;
+      border-radius: 999px;
+      background: var(--card);
+      box-shadow: 0 0 0 1px var(--border);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+      transition: background-color .2s ease, color .2s ease;
+    }
+    /* White sits only on the deep green, like a selected chip in the app */
+    .path-chip input:checked + span { background: var(--brand-fill); color: #fff; box-shadow: none; }
+    .path-chip input:focus-visible + span { outline: 2px solid var(--green); outline-offset: 2px; }
+    .path-result {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 20px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+    }
+    .path-result p { display: flex; flex-direction: column; gap: 4px; }
+    .path-result strong { font-size: clamp(1.375rem, 2.6vw, 1.75rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.01em; font-variant-numeric: tabular-nums; }
+    .path-result p > span { font-size: 0.9375rem; color: var(--muted); letter-spacing: var(--track-small); }
+    .path-save { text-align: right; align-items: flex-end; }
+    .path-save strong { color: var(--green-text); }
+    .path-lock { display: inline-flex; align-items: center; gap: 6px; }
+    .path-lock svg { width: 14px; height: 14px; flex-shrink: 0; }
+    .path + .tiles { margin-top: 24px; }
+    @media (max-width: 860px) {
+      .path { grid-template-columns: minmax(0, 1fr); text-align: center; }
+      .path-card { text-align: left; }
+    }
+    @media (max-width: 480px) {
+      .path { padding: 24px 16px 16px; border-radius: 28px; }
+      .path-card { padding: 18px; }
+    }
+
     .tiles {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1810,9 +1914,9 @@
   <header class="hero">
     <div class="wrap">
       <div class="hero-text">
-        <a class="hero-kicker" href="#assist">
+        <a class="hero-kicker" href="#pro">
           <svg class="spark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M10 2.5c.4 3.7 1.8 5.6 6 6.3-4.2.7-5.6 2.6-6 6.3-.4-3.7-1.8-5.6-6-6.3 4.2-.7 5.6-2.6 6-6.3Zm7.5 10c.2 2 1 3 3.3 3.4-2.3.4-3.1 1.4-3.3 3.4-.2-2-1-3-3.3-3.4 2.3-.4 3.1-1.4 3.3-3.4Z"/></svg>
-          <span>Ask Left Assist what to do this month</span>
+          <span>Debts and accounts are now free to add</span>
           <svg class="chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 2l4 4-4 4"/></svg>
         </a>
         <h1>Private budgeting.<br>No subscription.</h1>
@@ -2013,9 +2117,9 @@
         <ul class="assist-list">
           <li class="assist-item reveal">
             <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.2h5c0-.9.4-1.7 1.1-2.2A6 6 0 0 0 12 3Z"/></svg>Ask what to do</h3>
-            <p>Get up to three ideas for the rest of the month, worked out on your iPhone from your own numbers.</p>
+            <p>Get up to three ideas for the rest of this month or the month ahead, worked out on your iPhone from your own numbers.</p>
             <ul class="says" aria-label="Things you can ask">
-              <li>What should I do this month?</li><li>What else could I do?</li>
+              <li>What should I do this month?</li><li>What should I do next month?</li>
             </ul>
           </li>
           <li class="assist-item reveal d1">
@@ -2210,9 +2314,9 @@
         <figure class="glance-visual reveal d1">
           <div class="aurora" aria-hidden="true"></div>
           <picture>
-            <source type="image/avif" srcset="screenshots/glance-sm.avif 497w, screenshots/glance.avif 994w" sizes="(max-width: 1000px) min(360px, 84vw), 400px">
-            <img src="screenshots/glance.webp" srcset="screenshots/glance-sm.webp 497w, screenshots/glance.webp 994w" sizes="(max-width: 1000px) min(360px, 84vw), 400px"
-                 width="994" height="1886"
+            <source type="image/avif" srcset="screenshots/glance-sm.avif 497w, screenshots/glance.avif 993w" sizes="(max-width: 1000px) min(360px, 84vw), 400px">
+            <img src="screenshots/glance.webp" srcset="screenshots/glance-sm.webp 497w, screenshots/glance.webp 993w" sizes="(max-width: 1000px) min(360px, 84vw), 400px"
+                 width="993" height="1888"
                  alt="An iPhone Home Screen with three Left. widgets: a medium widget with the ring at $947 left of $4,983 income, $3,011 spent, $625 in bills to pay and $400 saved, and up next Electric &amp; gas, $96.00, due tomorrow; a small ring widget with $947 left; and a small Left to spend widget showing $947 with an Add Purchase button. An Apple Watch shows Left. Bills: 4 left to pay, $625, with Electric &amp; gas, $96.00, due tomorrow, and a credit card due in 3 days."
                  loading="lazy" decoding="async">
           </picture>
@@ -2273,19 +2377,27 @@
         </picture>
         <figcaption>Categories</figcaption>
       </figure>
-      <figure class="duo-card" style="--w: 909">
+      <figure class="duo-card" style="--w: 911">
         <picture>
-          <source type="image/avif" srcset="screenshots/duo-glance-sm.avif 455w, screenshots/duo-glance.avif 909w" sizes="(max-width: 640px) 273px, 364px">
-          <img src="screenshots/duo-glance.webp" srcset="screenshots/duo-glance-sm.webp 455w, screenshots/duo-glance.webp 909w" sizes="(max-width: 640px) 273px, 364px"
-               width="909" height="1446" alt="An iPhone Duo Home Screen with the Left. widget at $947 left of $4,983 income, beside an Apple Watch showing Left. Bills: 4 left to pay, $625." loading="lazy" decoding="async">
+          <source type="image/avif" srcset="screenshots/duo-glance-sm.avif 456w, screenshots/duo-glance.avif 911w" sizes="(max-width: 640px) 273px, 364px">
+          <img src="screenshots/duo-glance.webp" srcset="screenshots/duo-glance-sm.webp 456w, screenshots/duo-glance.webp 911w" sizes="(max-width: 640px) 273px, 364px"
+               width="911" height="1450" alt="An iPhone Duo Home Screen with the Left. widget at $947 left of $4,983 income and up next Electric &amp; gas, $96.00, due tomorrow, with the Left. app in the Dock. An Apple Watch shows Left. Bills: 4 left to pay, $625." loading="lazy" decoding="async">
         </picture>
         <figcaption>Home Screen</figcaption>
+      </figure>
+      <figure class="duo-card" style="--w: 869">
+        <picture>
+          <source type="image/avif" srcset="screenshots/duo-debt-sm.avif 435w, screenshots/duo-debt.avif 869w" sizes="(max-width: 640px) 261px, 348px">
+          <img src="screenshots/duo-debt.webp" srcset="screenshots/duo-debt-sm.webp 435w, screenshots/duo-debt.webp 869w" sizes="(max-width: 640px) 261px, 348px"
+               width="869" height="1211" alt="The Debt page on iPhone Duo: $29,900 total debt across 3 debts, debt-free by Dec 2029 on the payoff plan, a Pro feature. With $200 extra each month: 13 months sooner and $1,576 less interest." loading="lazy" decoding="async">
+        </picture>
+        <figcaption>Debt</figcaption>
       </figure>
       <figure class="duo-card" style="--w: 867">
         <picture>
           <source type="image/avif" srcset="screenshots/duo-networth-sm.avif 434w, screenshots/duo-networth.avif 867w" sizes="(max-width: 640px) 260px, 347px">
           <img src="screenshots/duo-networth.webp" srcset="screenshots/duo-networth-sm.webp 434w, screenshots/duo-networth.webp 867w" sizes="(max-width: 640px) 260px, 347px"
-               width="867" height="1208" alt="The Net Worth page on iPhone Duo, a Pro feature: $23,140 net worth from $53,040 in assets and $29,900 in debt, up $15,502 since Nov 20, 2025." loading="lazy" decoding="async">
+               width="867" height="1208" alt="The Net Worth page on iPhone Duo: $23,140 net worth from $53,040 in assets and $29,900 in debt, with a history chart, a Pro feature, up $15,502 since Nov 20, 2025." loading="lazy" decoding="async">
         </picture>
         <figcaption>Net Worth</figcaption>
       </figure>
@@ -2362,37 +2474,62 @@
       <div class="section-head reveal">
         <p class="eyebrow">Left. Pro</p>
         <h2>Pay once. Keep it forever.</h2>
-        <p class="sub">A debt payoff plan and your whole financial picture, for $9.99 once.</p>
-        <p class="body">Everything above is free. Pro is for the long game: getting out of debt and watching your net worth grow.</p>
+        <p class="sub">Left. is free. Pro just goes deeper.</p>
+        <p class="body">Add your debts and accounts for free. Pro turns them into a payoff plan with a debt-free date, and charts your net worth over time, for $9.99 once.</p>
+      </div>
+
+      <div class="path reveal">
+        <div class="path-copy">
+          <h3>See what a little extra would do.</h3>
+          <p>Add a debt for free, and Left. works out what $100 more a month would save: how much sooner you’d be done, and how much less interest you’d pay. Pro gives you the plan itself, down to a debt‑free date.</p>
+        </div>
+        <div class="path-card" id="pathCard">
+          <div class="path-head">
+            <span class="path-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2.2"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3"/></svg>Path to debt-free</span>
+            <span class="path-badge">Sample debts</span>
+          </div>
+          <p class="path-line">With <span id="pathExtra">$100</span> more a month on a payoff plan</p>
+          <p class="path-from">Worked out from $29,900 across 3 debts</p>
+          <div class="path-extra" role="radiogroup" aria-label="Extra each month">
+            <span class="path-label" aria-hidden="true">Extra each month</span>
+            <label class="path-chip"><input type="radio" name="pathExtra" value="100" checked><span>$100</span></label>
+            <label class="path-chip"><input type="radio" name="pathExtra" value="200"><span>$200</span></label>
+          </div>
+          <div class="path-result">
+            <p class="path-sooner"><strong><span id="pathMonths">8</span> months sooner</strong><span class="path-lock"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M5 7V5.2a3 3 0 0 1 6 0V7h.4A1.6 1.6 0 0 1 13 8.6v4.3a1.6 1.6 0 0 1-1.6 1.6H4.6A1.6 1.6 0 0 1 3 12.9V8.6A1.6 1.6 0 0 1 4.6 7Zm1.5 0h3V5.2a1.5 1.5 0 0 0-3 0Z"/></svg>Debt-free date in Pro</span></p>
+            <p class="path-save"><strong id="pathSaved">$1,051</strong><span>less interest</span></p>
+          </div>
+          <p class="vh" aria-live="polite" id="pathLive"></p>
+        </div>
       </div>
 
       <div class="tiles">
         <article class="tile reveal">
-          <span class="pro-pill"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.5c.4 3 1.5 4.3 4.8 4.9C9.5 7 8.4 8.3 8 11.3 7.6 8.3 6.5 7 3.2 6.4 6.5 5.8 7.6 4.5 8 1.5Z"/></svg>Left. Pro</span>
+          <span class="pro-pill"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.5c.4 3 1.5 4.3 4.8 4.9C9.5 7 8.4 8.3 8 11.3 7.6 8.3 6.5 7 3.2 6.4 6.5 5.8 7.6 4.5 8 1.5Z"/></svg>Payoff plan in Left. Pro</span>
           <h3>Pay off debt faster and smarter.</h3>
           <p class="sub">See what to pay first, and why.</p>
-          <p class="body">Choose Highest Rate or Smallest Balance, also called avalanche and snowball, and add a little extra each month. Here, $200 more a month means debt-free by Dec 2029 instead of Jan 2031, 13 months sooner, with $1,576 less interest.</p>
+          <p class="body">Add your debts for free. With Pro, choose Highest Rate or Smallest Balance, also called avalanche and snowball, and add a little extra each month. Here, $200 more a month means debt-free by Dec 2029, 13 months sooner, with $1,576 less interest.</p>
           <div class="tile-phone">
             <picture>
-              <source type="image/avif" srcset="screenshots/debt-sm.avif 449w, screenshots/debt.avif 898w" sizes="(max-width: 760px) min(280px, 76vw), 320px">
-              <img src="screenshots/debt.webp" srcset="screenshots/debt-sm.webp 449w, screenshots/debt.webp 898w" sizes="(max-width: 760px) min(280px, 76vw), 320px"
-                   width="898" height="1875"
-                   alt="The Left. Debt page, a Pro feature: $29,900 total debt with $24,700 paid off, debt-free by Jan 2031 on your payoff plan. The plan uses Highest Rate and puts extra toward the credit card first, because it has the highest rate. With $200 extra each month: 13 months sooner, debt-free by Dec 2029, with $1,576 less interest. If paid-off payments didn’t move to the next debt, it would take 3½ years longer and cost $1,883 more. Payoff dates: credit card Sep 2027, car loan Jun 2028."
+              <source type="image/avif" srcset="screenshots/debt-sm.avif 448w, screenshots/debt.avif 896w" sizes="(max-width: 760px) min(280px, 76vw), 320px">
+              <img src="screenshots/debt.webp" srcset="screenshots/debt-sm.webp 448w, screenshots/debt.webp 896w" sizes="(max-width: 760px) min(280px, 76vw), 320px"
+                   width="896" height="1876"
+                   alt="The Left. Debt page: $29,900 total debt across 3 debts, with $700 a month in minimums and $24,700 paid off, debt-free by Dec 2029 on your payoff plan. The payoff plan, a Pro feature, uses Highest Rate and puts extra toward the credit card first, because it has the highest rate. With $200 extra each month: 13 months sooner, debt-free by Dec 2029, with $1,576 less interest."
                    loading="lazy" decoding="async">
             </picture>
           </div>
         </article>
         <article class="tile reveal d1">
-          <span class="pro-pill"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.5c.4 3 1.5 4.3 4.8 4.9C9.5 7 8.4 8.3 8 11.3 7.6 8.3 6.5 7 3.2 6.4 6.5 5.8 7.6 4.5 8 1.5Z"/></svg>Left. Pro</span>
+          <span class="pro-pill"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.5c.4 3 1.5 4.3 4.8 4.9C9.5 7 8.4 8.3 8 11.3 7.6 8.3 6.5 7 3.2 6.4 6.5 5.8 7.6 4.5 8 1.5Z"/></svg>History chart in Left. Pro</span>
           <h3>Your whole financial picture.</h3>
           <p class="sub">Track assets, debt, and net worth over time.</p>
-          <p class="body">Add what you own and what you owe, update balances when you like, and watch the line climb. Here, $53,040 in assets against $29,900 of debt is a $23,140 net worth, up $15,502 in a year.</p>
+          <p class="body">Add what you own and what you owe for free, and update balances when you like. Pro adds the history chart, so you can watch the line climb. Here, $53,040 in assets against $29,900 of debt is a $23,140 net worth, up $15,502 in a year.</p>
           <div class="tile-phone">
             <picture>
               <source type="image/avif" srcset="screenshots/networth-sm.avif 447w, screenshots/networth.avif 894w" sizes="(max-width: 760px) min(280px, 76vw), 320px">
               <img src="screenshots/networth.webp" srcset="screenshots/networth-sm.webp 447w, screenshots/networth.webp 894w" sizes="(max-width: 760px) min(280px, 76vw), 320px"
                    width="894" height="1877"
-                   alt="The Left. Net Worth page, a Pro feature: $23,140 net worth from $53,040 in assets and $29,900 in debt, up $1,324 since Oct 20. A green history line climbs from under $10K to over $20K, up $15,502 since Nov 20, 2025. Cash &amp; checking totals $11,540: checking $2,640.00 and savings $8,900.00."
+                   alt="The Left. Net Worth page: $23,140 net worth from $53,040 in assets and $29,900 in debt, up $1,324 since Oct 20. The history chart, a Pro feature, shows a green line climbing from under $10K to over $20K, up $15,502 since Nov 20, 2025. Cash &amp; checking totals $11,540: checking $2,640.00 and savings $8,900.00."
                    loading="lazy" decoding="async">
             </picture>
           </div>
@@ -2411,6 +2548,7 @@
             <li><span class="check"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>What’s left, with a daily amount</li>
             <li><span class="check"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>Categories, limits, and search</li>
             <li><span class="check"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>Savings goals</li>
+            <li><span class="check"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>Debts and accounts, free to add</li>
             <li><span class="check"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>Receipt scanning</li>
             <li><span class="check"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>Left Assist, typed or spoken</li>
             <li><span class="check"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>Apple Watch, widgets, and Siri</li>
@@ -2424,11 +2562,11 @@
           </div>
           <p class="plan-tag">Everything in Free, plus:</p>
           <ul>
-            <li><span class="check"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>Debt payoff plan: Highest Rate or Smallest Balance</li>
-            <li><span class="check"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>Payoff dates and the interest you’ll save</li>
-            <li><span class="check"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>Net worth, tracked over time</li>
-            <li><span class="check"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>Assets and accounts in one place</li>
-            <li><span class="check"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>An optional monthly balance reminder</li>
+            <li><span class="check"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>Payoff plan: Highest Rate or Smallest Balance</li>
+            <li><span class="check"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>Extra payments, payoff dates, and your debt-free date</li>
+            <li><span class="check"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>The interest you’ll save</li>
+            <li><span class="check"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>Net worth history chart</li>
+            <li><span class="check"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>Debt over time, month by month</li>
             <li><span class="check"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>All future updates included</li>
           </ul>
           <p class="plan-foot">One-time in-app purchase. No subscription. Restore on a new iPhone with the same Apple Account.</p>
@@ -2455,7 +2593,7 @@
       <div class="faq-list reveal">
         <details name="faq">
           <summary><h3>Is Left. really free?</h3><svg class="faq-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M10 3v14M3 10h14"/></svg></summary>
-          <p class="answer">Yes. Income, bills, purchases, categories and limits, savings goals, receipt scanning, Left Assist, Apple Watch, widgets, Siri, and iCloud sync are all free. Left. Pro is a $9.99 one-time purchase that adds the debt payoff plan and net worth.</p>
+          <p class="answer">Yes. Income, bills, purchases, categories and limits, savings goals, receipt scanning, Left Assist, Apple Watch, widgets, Siri, and iCloud sync are all free, and so is adding your debts and accounts. Left. Pro is a $9.99 one-time purchase that adds the payoff plan, with your debt-free date, and the net worth history chart.</p>
         </details>
         <details name="faq">
           <summary><h3>Is there a subscription?</h3><svg class="faq-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M10 3v14M3 10h14"/></svg></summary>
@@ -2491,7 +2629,7 @@
         </details>
         <details name="faq">
           <summary><h3>Does Left Assist give financial advice?</h3><svg class="faq-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M10 3v14M3 10h14"/></svg></summary>
-          <p class="answer">It gives budget advice from your own numbers. Ask “What should I do this month?” and it suggests up to three things, with every figure calculated by the app. It doesn’t help with investing, taxes, or legal questions, and nothing changes until you tap.</p>
+          <p class="answer">It gives budget advice from your own numbers. Ask “What should I do this month?” or “What should I do next month?” and it suggests up to three things, with every figure calculated by the app. It doesn’t help with investing, taxes, or legal questions, and nothing changes until you tap.</p>
         </details>
         <details name="faq">
           <summary><h3>Does it work with my currency?</h3><svg class="faq-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M10 3v14M3 10h14"/></svg></summary>
@@ -2503,7 +2641,7 @@
         </details>
         <details name="faq">
           <summary><h3>What happens when I get a new iPhone?</h3><svg class="faq-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M10 3v14M3 10h14"/></svg></summary>
-          <p class="answer">Sign in with the same Apple Account, install Left., and your data syncs back through iCloud. Pro restores automatically, and Restore Purchase is there if you ever need it.</p>
+          <p class="answer">Sign in with the same Apple Account, install Left., and your data syncs back through iCloud. Pro restores automatically, and Restore Purchases is there if you ever need it.</p>
         </details>
       </div>
       <div class="faq-more reveal">
@@ -2875,6 +3013,36 @@
           }, { threshold: 0.6 });
           npIO.observe(np);
         }
+      }
+
+      // Path to debt-free: the two extras the app's screenshots show for the sample debts
+      const pathCard = document.getElementById('pathCard');
+      if (pathCard) {
+        const PATHS = { 100: { months: 8, saved: 1051 }, 200: { months: 13, saved: 1576 } };
+        const extraEl = document.getElementById('pathExtra');
+        const monthsEl = document.getElementById('pathMonths');
+        const savedEl = document.getElementById('pathSaved');
+        const pathLive = document.getElementById('pathLive');
+        const whole = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
+        let shown = { ...PATHS[100] }, raf;
+        const paint = (v) => { monthsEl.textContent = Math.round(v.months); savedEl.textContent = whole.format(Math.round(v.saved)); };
+        pathCard.addEventListener('change', (e) => {
+          const to = PATHS[e.target.value];
+          if (!to) return;
+          extraEl.textContent = whole.format(+e.target.value);
+          pathLive.textContent = `With ${whole.format(+e.target.value)} more a month: ${to.months} months sooner and ${whole.format(to.saved)} less interest.`;
+          cancelAnimationFrame(raf);
+          if (reduced) { shown = { ...to }; paint(shown); return; }
+          // The figures count from one answer to the other
+          const from = { ...shown }, t0 = performance.now();
+          const step = (now) => {
+            const k = Math.min(1, (now - t0) / 450), eased = 1 - Math.pow(1 - k, 3);
+            shown = { months: from.months + (to.months - from.months) * eased, saved: from.saved + (to.saved - from.saved) * eased };
+            paint(shown);
+            if (k < 1) raf = requestAnimationFrame(step);
+          };
+          raf = requestAnimationFrame(step);
+        });
       }
 
       // iPhone Duo rail: the buttons move one screen at a time and dim at either end
