@@ -479,11 +479,14 @@
 
     /* ===== HERO ===== */
     .hero {
+      /* Shorter windows get tighter spacing, so more of the phone shows on the first screen */
       padding-top: clamp(56px, 8vw, 104px);
+      padding-top: clamp(56px, min(8vw, 9svh), 104px);
       text-align: center;
       position: relative;
     }
     .hero-text { max-width: 900px; margin: 0 auto; }
+    .hero h1 { font-size: clamp(2.75rem, min(7vw, 10.5svh), 5.5rem); }
     .hero-kicker {
       display: inline-flex;
       align-items: center;
@@ -521,30 +524,46 @@
     .hero-stage {
       --pw: 400px;              /* centre phone width */
       --sw: 316px;              /* side phone width */
+      --room: 48px;             /* air above the phones: the centre one drifts up as the page scrolls */
       position: relative;
-      height: calc(var(--pw) * 1.36);
-      margin-top: clamp(48px, 6vw, 72px);
+      height: calc(var(--pw) * 1.36 + var(--room));
+      margin-top: calc(clamp(48px, 6vw, 72px) - var(--room));
+      margin-top: calc(clamp(48px, min(6vw, 6svh), 72px) - var(--room));
       overflow: hidden;
-      -webkit-mask-image: linear-gradient(to bottom, #000 74%, transparent);
-      mask-image: linear-gradient(to bottom, #000 74%, transparent);
     }
+    /* The phones dissolve into the next section's background, so the two meet without a line */
+    .hero-stage::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 -2px;       /* past the edge, so no row of phone shows under it */
+      height: 32%;
+      z-index: 3;
+      background: linear-gradient(to bottom, transparent, color-mix(in srgb, var(--bg-alt) 50%, transparent) 42%, var(--bg-alt) 90%);
+      pointer-events: none;
+    }
+    /* A glow in the ring's colours, sized by the phones so it frames them at any window width */
     .aurora {
       position: absolute;
-      inset: 8% 0 0;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: min(100%, calc(var(--pw) + var(--sw) * 3.4));
+      translate: -50% 0;
+      /* Each one fades out inside the box, so the blur never shows a straight edge */
       background:
-        radial-gradient(28% 42% at 34% 46%, rgba(46, 123, 245, 0.55), transparent 70%),
-        radial-gradient(26% 40% at 66% 40%, rgba(52, 199, 89, 0.6), transparent 70%),
-        radial-gradient(22% 34% at 50% 78%, rgba(175, 82, 222, 0.45), transparent 70%);
-      filter: blur(48px);
+        radial-gradient(28% 50% at 20% 54%, rgba(46, 123, 245, 0.6), transparent 70%),
+        radial-gradient(28% 50% at 80% 48%, rgba(52, 199, 89, 0.62), transparent 70%),
+        radial-gradient(32% 36% at 50% 26%, rgba(175, 82, 222, 0.42), transparent 70%);
+      filter: blur(56px);
       opacity: var(--aurora-opacity);
       pointer-events: none;
     }
-    .hp { position: absolute; top: 0; }
+    .hp { position: absolute; top: var(--room); }
     .hp img { filter: var(--phone-shadow); }
     /* The centre shot is wider than the phone (a Watch sits at its foot), so it's sized and
        placed by the phone: 896px of the 1009px image is phone, centred at 449px */
     .hp-center { left: calc(50% - var(--pw) * 0.501); width: calc(var(--pw) * 1.126); z-index: 2; }
-    .hp-side { width: var(--sw); top: 64px; z-index: 1; }
+    .hp-side { width: var(--sw); top: calc(var(--room) + 64px); z-index: 1; }
     .hp-left { left: calc(50% - var(--pw) / 2 - var(--sw) * 0.72); }
     .hp-right { left: calc(50% + var(--pw) / 2 - var(--sw) * 0.28); }
     .hp-side img { opacity: 0.96; }
@@ -2089,7 +2108,7 @@
         <source type="image/avif" srcset="screenshots/overview-sm.avif 504w, screenshots/overview.avif 1007w" sizes="(max-width: 760px) min(338px, 85.6vw), (max-width: 1024px) 383px, 450px">
         <img src="screenshots/overview.webp" srcset="screenshots/overview-sm.webp 504w, screenshots/overview.webp 1007w" sizes="(max-width: 760px) min(338px, 85.6vw), (max-width: 1024px) 383px, 450px"
              width="1007" height="1921"
-             alt="Left. on iPhone for November 2026, day 20 of 30: a ring showing $947 left of $4,983 income, including $350 still coming, with $746 in purchases, $2,890 in bills with $625 left to pay, and $400 saved. This month shows 15 days logged, with four days logged this week, above Spending pace at $37 a day. An Apple Watch shows the same $947 left and $86 a day."
+             alt="Left. on iPhone for November 2026, day 20 of 30: a ring showing $947 left of $4,983 income, including $350 still coming, with $746 in purchases, $2,890 in bills with $625 left to pay, and $400 saved. Below the ring, This month shows 15 days logged."
              loading="eager" decoding="async" fetchpriority="high">
       </picture>
     </div>
