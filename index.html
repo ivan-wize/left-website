@@ -1493,12 +1493,14 @@
     .duo { overflow-x: clip; }
     .duo-rail {
       --s: 0.44;                      /* shown size of each source pixel */
+      --dw: 783;                      /* the device's box in every shot, in source pixels: */
+      --dh: 1091;                     /* cards are sized by it, so a Watch hangs past its card */
       position: relative;             /* cards measure their offsets against the rail */
       display: flex;
       align-items: flex-start;
       gap: clamp(28px, 4vw, 56px);
       margin-top: clamp(40px, 5vw, 64px);
-      padding: 12px max(24px, calc(50% - 173px)) 28px;
+      padding: 12px max(24px, calc(50% - 173px)) 120px;
       overflow-x: auto;
       overscroll-behavior-x: contain;
       scroll-snap-type: x mandatory;
@@ -1506,10 +1508,13 @@
     }
     .duo-rail::-webkit-scrollbar { display: none; }
     .duo-rail:focus-visible { outline: 2px solid var(--green); outline-offset: -2px; border-radius: 24px; }
-    .duo-card { flex: none; margin: 0; scroll-snap-align: center; text-align: center; }
-    .duo-card img { width: calc(var(--w) * var(--s) * 1px); height: auto; filter: var(--phone-shadow); }
+    /* Scaling from the bottom edge keeps every caption on one line */
+    .duo-card { flex: none; width: calc(var(--dw) * var(--s) * 1px); margin: 0; scroll-snap-align: center; text-align: center; transform-origin: 50% 100%; }
+    .duo-card picture { display: block; height: calc(var(--dh) * var(--s) * 1px); }
+    .duo-card img { display: block; width: calc(var(--w) * var(--s) * 1px); max-width: none; height: auto; filter: var(--phone-shadow); }
     .duo-card figcaption {
       margin-top: 18px;
+      translate: var(--nudge, 0) 0;   /* a card whose Watch sits close to the caption shifts it clear */
       font-size: 0.9375rem;
       font-weight: 500;
       color: var(--muted);
@@ -1524,7 +1529,7 @@
       0%, 100% { scale: .84; opacity: .5; }
       50% { scale: 1; opacity: 1; }
     }
-    .duo-nav { display: flex; justify-content: center; gap: 12px; margin-top: 8px; }
+    .duo-nav { display: flex; justify-content: center; gap: 12px; margin-top: -24px; }
     .duo-btn {
       width: 44px;
       height: 44px;
@@ -2586,13 +2591,13 @@
         </picture>
         <figcaption>Categories</figcaption>
       </figure>
-      <figure class="duo-card" style="--w: 822">
+      <figure class="duo-card" style="--w: 822; --nudge: -5%">
         <picture>
           <source type="image/avif" srcset="screenshots/duo-glance-sm.avif 411w, screenshots/duo-glance.avif 822w" sizes="(max-width: 640px) 279px, 362px">
           <img src="screenshots/duo-glance.webp" srcset="screenshots/duo-glance-sm.webp 411w, screenshots/duo-glance.webp 822w" sizes="(max-width: 640px) 279px, 362px"
                width="822" height="1306" alt="An iPhone Duo Home Screen with three Left. widgets showing $947 left of $4,983 income and an Add Purchase button, with the Left. app in the Dock. An Apple Watch shows Left. Bills: 4 left to pay, $625." loading="lazy" decoding="async">
         </picture>
-        <figcaption>Home Screen</figcaption>
+        <figcaption>Widgets</figcaption>
       </figure>
       <figure class="duo-card" style="--w: 783">
         <picture>
