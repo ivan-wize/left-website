@@ -624,9 +624,13 @@
       position: relative;
       width: min(360px, 100%);
       aspect-ratio: 1;
+      container-type: inline-size;   /* the amount is sized from the ring's width */
     }
     .ring { width: 100%; height: 100%; display: block; overflow: visible; }
     .ring-track { fill: none; stroke: var(--track); }
+    /* Like the app, the month's ring has clean gaps: its track only shows while there's nothing to draw */
+    .ring-box .ring-track, .mini-ring .ring-track { stroke: transparent; transition: stroke .3s ease; }
+    .ring-box.empty .ring-track { stroke: var(--track); }
     .seg {
       fill: none;
       stroke-linecap: round;
@@ -645,43 +649,40 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      gap: 2px;
+      gap: 4px;
     }
-    .ring-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.9375rem;
-      color: var(--muted);
-      letter-spacing: var(--track-small);
-    }
-    .ring-label::before {
-      content: '';
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--green);
-    }
-    .ring-box.over .ring-label::before { background: var(--red-text); }
+    /* The amount, with a small "left" (or "over") under it */
     .ring-amount {
-      font-size: clamp(2.75rem, 5.4vw, 3.75rem);
+      font-size: clamp(2.25rem, 6vw, 4rem);
+      font-size: 17.5cqi;
       font-weight: 700;
-      line-height: 1.05;
+      line-height: 1;
       color: var(--green-text);
       letter-spacing: -0.02em;
       font-variant-numeric: tabular-nums;
     }
-    .ring-box.over .ring-amount { color: var(--red-text); }
-    .ring-box.empty .ring-label { font-size: 1.1875rem; color: var(--fg); }
-    .ring-box.empty .ring-label::before, .ring-box.empty .ring-amount, .ring-box.empty .ring-of { display: none; }
-    .ring-of {
-      font-size: 0.9375rem;
+    .ring-label {
+      font-size: 1.125rem;
+      line-height: 1.2;
       color: var(--muted);
-      letter-spacing: var(--track-small);
+      letter-spacing: var(--track-body);
+    }
+    /* Seven characters, like $10,000, still have to fit inside the ring */
+    .ring-amount.long { font-size: clamp(1.75rem, 4.6vw, 3.25rem); font-size: 14.5cqi; }
+    .ring-box.over .ring-amount, .ring-box.over .ring-label { color: var(--red-text); }
+    .ring-box.empty .ring-amount { display: none; }
+    .ring-box.empty .ring-label { font-size: 1.1875rem; color: var(--fg); }
+    /* The income line sits under the ring; it keeps its place while there's no income to show */
+    .ring-of {
+      margin-top: 14px;
+      font-size: 1.0625rem;
+      color: var(--muted);
+      letter-spacing: var(--track-body);
       font-variant-numeric: tabular-nums;
     }
+    .ring-box.empty + .ring-of { visibility: hidden; }
     .demo-daily {
-      margin-top: 22px;
+      margin-top: 16px;
       display: inline-flex;
       align-items: center;
       min-height: 36px;
@@ -2103,18 +2104,18 @@
         <div class="demo-visual">
           <div class="ring-box" id="demoRingBox">
             <svg class="ring" id="demoRing" viewBox="0 0 400 400" aria-hidden="true" data-gap="1.2">
-              <circle class="ring-track" cx="200" cy="200" r="168" stroke-width="30"/>
-              <circle class="seg seg-purchases" cx="200" cy="200" r="168" stroke-width="30" pathLength="100" transform="rotate(-90 200 200)"/>
-              <circle class="seg seg-bills" cx="200" cy="200" r="168" stroke-width="30" pathLength="100" transform="rotate(-90 200 200)"/>
-              <circle class="seg seg-saved" cx="200" cy="200" r="168" stroke-width="30" pathLength="100" transform="rotate(-90 200 200)"/>
-              <circle class="seg seg-left" cx="200" cy="200" r="168" stroke-width="30" pathLength="100" transform="rotate(-90 200 200)"/>
+              <circle class="ring-track" cx="200" cy="200" r="168" stroke-width="28"/>
+              <circle class="seg seg-purchases" cx="200" cy="200" r="168" stroke-width="28" pathLength="100" transform="rotate(-90 200 200)"/>
+              <circle class="seg seg-bills" cx="200" cy="200" r="168" stroke-width="28" pathLength="100" transform="rotate(-90 200 200)"/>
+              <circle class="seg seg-saved" cx="200" cy="200" r="168" stroke-width="28" pathLength="100" transform="rotate(-90 200 200)"/>
+              <circle class="seg seg-left" cx="200" cy="200" r="168" stroke-width="28" pathLength="100" transform="rotate(-90 200 200)"/>
             </svg>
             <div class="ring-center">
-              <span class="ring-label" id="demoLabel">Left to spend</span>
               <span class="ring-amount" id="demoLeft">$947</span>
-              <span class="ring-of" id="demoOf">of $4,983 income</span>
+              <span class="ring-label" id="demoLabel">left</span>
             </div>
           </div>
+          <p class="ring-of" id="demoOf">of $4,983 income</p>
           <p class="demo-daily" id="demoDaily">$86/day for 11 days</p>
         </div>
 
@@ -3051,7 +3052,7 @@
           });
 
           const left = v.income - v.purchases - v.bills - v.saved;
-          // With no income there's nothing to split yet, so the ring is just its track
+          // With no income there's nothing to split yet, so the ring is just its grey track
           drawRing(ring, v.income === 0 ? [0, 0, 0, 0] : [v.purchases, v.bills, v.saved, Math.max(left, 0)]);
           ofEl.textContent = `of ${fmt.format(v.income)} income`;
           box.classList.toggle('empty', v.income === 0);
@@ -3061,24 +3062,24 @@
             box.classList.remove('over');
             label.textContent = 'Add income to start';
             leftEl.textContent = '';
-            ofEl.textContent = '';
             daily.textContent = 'Add your income and the ring fills up';
             summary = 'Add income to start.';
           } else if (left >= 0) {
             box.classList.remove('over');
-            label.textContent = 'Left to spend';
+            label.textContent = 'left';
             leftEl.textContent = fmt.format(left);
             const perDay = Math.floor(left / v.days);
             daily.textContent = `${fmt.format(perDay)}/day for ${v.days} ${v.days === 1 ? 'day' : 'days'}`;
             summary = `Left to spend: ${fmt.format(left)}, about ${fmt.format(perDay)} a day.`;
           } else {
             box.classList.add('over');
-            // The label already says it, so the number is just the overrun
-            label.textContent = 'Over budget';
+            // The overrun, in red, with "over" where "left" was
+            label.textContent = 'over';
             leftEl.textContent = fmt.format(-left);
             daily.textContent = 'Spending is ahead of income this month';
             summary = `Over budget by ${fmt.format(-left)}.`;
           }
+          leftEl.classList.toggle('long', leftEl.textContent.length > 6);
           clearTimeout(liveTimer);
           liveTimer = setTimeout(() => { live.textContent = summary; }, 600);
         };
